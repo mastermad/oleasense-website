@@ -1,0 +1,5 @@
+Montserrat
+Copyright 2011 The Montserrat Project Authors (https://github.com/JulietaUla/Montserrat)
+
+Cette police est distribuée sous la licence SIL Open Font License, Version 1.1.
+Texte complet : https://openfontlicense.org

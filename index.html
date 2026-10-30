@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OleaSense — Spectral Intelligence pour l'oléiculture</title>
+  <meta name="description" content="OleaSense associe imagerie hyperspectrale, satellite, drone et intelligence artificielle pour aider les oléiculteurs et les huileries à décider plus tôt, du verger à l'huile.">
+  <meta name="theme-color" content="#123D2E">
+  <link rel="icon" type="image/png" href="assets/icone-application.png">
+  <link rel="canonical" href="https://oleasense.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="OleaSense">
+  <meta property="og:title" content="OleaSense — Spectral Intelligence pour l'oléiculture">
+  <meta property="og:description" content="Imagerie hyperspectrale, satellite, drone et intelligence artificielle pour décider plus tôt, du verger à l'huile.">
+  <meta property="og:url" content="https://oleasense.com/">
+  <link rel="preload" href="assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=8">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19C5 10 10 5 19 5c0 9-5 14-14 14zM5 19l7-7"/></symbol>
+      <symbol id="i-satellite" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-30 12 12)"/><circle cx="12" cy="12" r="3"/></symbol>
+      <symbol id="i-drone" viewBox="0 0 24 24"><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M7 7l3 3M17 7l-3 3M7 17l3-3M17 17l-3-3"/></symbol>
+      <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z"/></symbol>
+      <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3M8 15h8"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+      <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16l4-5 3 3 5-7"/></symbol>
+      <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 17v-6a6 6 0 0 1 12 0v6l2 2H4zM10 21h4"/></symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></symbol>
+      <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></symbol>
+      <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+      <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M12 21v-9M12 12c0-4-3-6-7-6 0 4 3 6 7 6zM12 14c0-3 2-5 6-5 0 3-2 5-6 5z"/></symbol>
+    </defs>
+  </svg>
+
+  <header class="site-header" id="entete">
+    <div class="container header-inner">
+      <a class="brand" href="#accueil" aria-label="OleaSense — accueil">
+        <img src="assets/logo-principal.png" alt="OleaSense — Spectral Intelligence" width="1155" height="425">
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
+        <span class="nav-toggle-bar" aria-hidden="true"></span>
+        <span class="visually-hidden">Menu</span>
+      </button>
+      <nav id="menu-principal" class="main-nav" aria-label="Navigation principale">
+        <ul>
+          <li><a href="#lumiere">La lumière</a></li>
+          <li><a href="#solutions">Solutions</a></li>
+          <li><a href="#parcours">Du verger à l'huile</a></li>
+          <li><a href="#application">Application</a></li>
+          <li><a href="#utilisateurs">Pour qui</a></li>
+          <li><a class="button button-small" href="#contact">Demander une démonstration</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <!-- Héro animé -->
+    <section id="accueil" class="hero" aria-labelledby="titre-hero">
+      <canvas class="hero-canvas" aria-hidden="true"></canvas>
+      <video class="hero-video" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1">
+        <source src="assets/hero.mp4" type="video/mp4">
+      </video>
+      <div class="hero-shade" aria-hidden="true"></div>
+
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Spectral Intelligence</p>
+          <h1 id="titre-hero">Voir la santé de l'olivier <span class="gradient-text">avant qu'elle ne se voie.</span></h1>
+          <p class="lead">Imagerie hyperspectrale, satellite, drone et intelligence artificielle réunis pour aider les oléiculteurs et les huileries à décider plus tôt, du verger à l'huile.</p>
+          <div class="hero-actions">
+            <a class="button button-gold" href="#contact">Demander une démonstration</a>
+            <a class="button button-ghost" href="#lumiere">Voir comment ça marche <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+          <ul class="hero-sources" aria-label="Sources de mesure">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg> Terrain</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-satellite"/></svg> Satellite</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-drone"/></svg> Drone</li>
+          </ul>
+        </div>
+
+        <aside class="scan-card" aria-label="Exemple de diagnostic">
+          <header>
+            <span class="live-dot" aria-hidden="true"></span>
+            <p>Diagnostic de parcelle</p>
+            <span class="tag">Exemple</span>
+          </header>
+          <div class="gauge" role="img" aria-label="Indice de stress hydrique 0,27, niveau modéré">
+            <svg viewBox="0 0 200 120" aria-hidden="true">
+              <defs>
+                <linearGradient id="jauge" x1="0" x2="1">
+                  <stop offset="0" stop-color="#079A79"/>
+                  <stop offset=".55" stop-color="#D9AA36"/>
+                  <stop offset="1" stop-color="#d25b43"/>
+                </linearGradient>
+              </defs>
+              <path d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="rgba(255,255,255,.14)" stroke-width="14" stroke-linecap="round" pathLength="100"/>
+              <path class="gauge-fill" d="M20 100 A80 80 0 0 1 180 100" fill="none" stroke="url(#jauge)" stroke-width="14" stroke-linecap="round" pathLength="100" stroke-dasharray="100" stroke-dashoffset="100"/>
+            </svg>
+            <div class="gauge-value"><strong>0,27</strong><span>Stress hydrique</span></div>
+          </div>
+          <p class="badge badge-amber">Modéré</p>
+          <svg class="spark" viewBox="0 0 240 56" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 40 C20 38 30 30 55 32 S95 44 120 30 S170 12 195 20 S225 14 240 8" fill="none" stroke="#D9AA36" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M0 40 C20 38 30 30 55 32 S95 44 120 30 S170 12 195 20 S225 14 240 8 V56 H0Z" fill="rgba(217,170,54,.14)"/>
+          </svg>
+          <dl class="scan-meta">
+            <div><dt>Parcelle</dt><dd>Parcelle 01</dd></div>
+            <div><dt>Suivi</dt><dd>30 jours</dd></div>
+          </dl>
+        </aside>
+      </div>
+      <a class="scroll-hint" href="#lumiere" aria-label="Faire défiler vers la suite"><span></span></a>
+    </section>
+
+    <!-- Bandeau -->
+    <section class="strip" aria-label="Ce que fait OleaSense">
+      <div class="container strip-inner">
+        <p><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg> Détecter avant les symptômes</p>
+        <p><svg class="icon" aria-hidden="true"><use href="#i-drop"/></svg> Irriguer au bon moment</p>
+        <p><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg> Garantir la qualité de l'huile</p>
+        <p><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg> Tracer chaque lot</p>
+      </div>
+    </section>
+
+    <!-- Démonstration interactive -->
+    <section id="lumiere" class="section" aria-labelledby="titre-lumiere">
+      <div class="container split split-wide">
+        <div class="reveal">
+          <p class="eyebrow eyebrow-dark">Ce que la lumière révèle</p>
+          <h2 id="titre-lumiere">Une feuille parle bien avant de jaunir.</h2>
+          <p class="prose">Chaque feuille renvoie la lumière à sa manière. Quand l'arbre manque d'eau, sa signature change : la chlorophylle absorbe moins, la teneur en eau baisse. Nos capteurs lisent ces écarts sur des dizaines de longueurs d'onde, là où l'œil n'en voit que trois.</p>
+          <p class="prose">Déplacez le curseur pour voir comment la signature d'une feuille évolue avec le stress.</p>
+          <p class="note">Illustration pédagogique, non issue de mesures réelles.</p>
+        </div>
+
+        <div class="spectrum reveal" id="spectre">
+          <div class="spectrum-head">
+            <p class="badge" id="spectre-etat">Végétation saine</p>
+            <p class="spectrum-legend"><span class="dot dot-live"></span> Feuille observée <span class="dot dot-ref"></span> Feuille saine</p>
+          </div>
+          <svg id="spectre-svg" viewBox="0 0 640 320" role="img" aria-labelledby="spectre-titre spectre-desc">
+            <title id="spectre-titre">Réflectance d'une feuille selon la longueur d'onde</title>
+            <desc id="spectre-desc">Courbe de réflectance entre 400 et 1100 nanomètres, comparée à celle d'une feuille saine.</desc>
+          </svg>
+          <div class="spectrum-control">
+            <label for="spectre-stress">Niveau de stress hydrique</label>
+            <input id="spectre-stress" type="range" min="0" max="100" value="0" aria-describedby="spectre-message">
+          </div>
+          <p id="spectre-message" class="spectrum-message" aria-live="polite">Forte absorption de la chlorophylle dans le rouge et plateau élevé dans le proche infrarouge : l'arbre est en bonne santé.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions -->
+    <section id="solutions" class="section section-tint" aria-labelledby="titre-solutions">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow eyebrow-dark">Solutions</p>
+          <h2 id="titre-solutions">Une plateforme pour toute la filière</h2>
+        </div>
+        <div class="cards">
+          <article class="card reveal">
+            <span class="card-icon"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-sprout"/></svg></span>
+            <h3>OleaSense Field</h3>
+            <p class="card-tag">Pour le verger</p>
+            <ul>
+              <li>Diagnostic du stress hydrique à partir du spectre des feuilles</li>
+              <li>Suivi par satellite en continu, croisé avec vos propres mesures</li>
+              <li>Carte des parcelles et historique de chaque verger</li>
+              <li>Bilan hydrique, simulateur de dose d'eau et prescription d'irrigation exportable</li>
+            </ul>
+          </article>
+          <article class="card reveal">
+            <span class="card-icon card-icon-teal"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-flask"/></svg></span>
+            <h3>OleaSense Mill</h3>
+            <p class="card-tag">Pour l'huilerie</p>
+            <ul>
+              <li>Réception et suivi des lots d'olives</li>
+              <li>Indicateurs d'acidité et de qualité de l'huile</li>
+              <li>Conformité pour l'export</li>
+              <li>Traçabilité d'un lot jusqu'à sa parcelle d'origine</li>
+            </ul>
+          </article>
+          <article class="card reveal">
+            <span class="card-icon card-icon-gold"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-layers"/></svg></span>
+            <h3>Le pont agro-huilerie</h3>
+            <p class="card-tag">Pour toute la filière</p>
+            <ul>
+              <li>Lien entre l'état du verger à la récolte et la qualité de l'huile obtenue</li>
+              <li>Alertes par SMS vers les équipes de terrain</li>
+              <li>Accès adaptés à chaque métier</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Parcours -->
+    <section id="parcours" class="journey" aria-labelledby="titre-parcours">
+      <svg class="landscape" viewBox="0 0 1600 460" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false"></svg>
+      <div class="container journey-inner">
+        <div class="section-head section-head-light reveal">
+          <p class="eyebrow">Du verger à l'huile</p>
+          <h2 id="titre-parcours">Un fil continu, de la parcelle à la bouteille</h2>
+        </div>
+        <ol class="journey-steps">
+          <li class="reveal">
+            <span class="step-badge">1</span>
+            <h3>Mesurer</h3>
+            <p>Terrain, satellite et drone captent la lumière de chaque parcelle.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-badge">2</span>
+            <h3>Diagnostiquer</h3>
+            <p>L'intelligence artificielle traduit les mesures en niveau de stress et en priorités.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-badge">3</span>
+            <h3>Agir</h3>
+            <p>Alertes, doses d'irrigation et prescriptions pour intervenir au bon endroit.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-badge">4</span>
+            <h3>Garantir</h3>
+            <p>Qualité à la réception, conformité et traçabilité jusqu'à la parcelle d'origine.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Aperçu de l'application -->
+    <section id="application" class="section" aria-labelledby="titre-application">
+      <div class="container split split-wide">
+        <div class="reveal">
+          <p class="eyebrow eyebrow-dark">L'application</p>
+          <h2 id="titre-application">Tout l'essentiel, d'un coup d'œil.</h2>
+          <ul class="checks">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg> Indicateurs clairs : stress hydrique, acidité, scans analysés</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg> Alertes urgentes classées par gravité</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg> Carte, parcelles, images satellite et lots au même endroit</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg> Sur ordinateur comme sur téléphone</li>
+          </ul>
+          <p class="note">Aperçu illustratif avec des données de démonstration.</p>
+        </div>
+
+        <div class="devices reveal" aria-hidden="true">
+          <div class="browser">
+            <div class="browser-bar"><span></span><span></span><span></span></div>
+            <div class="browser-body">
+              <aside class="mock-side">
+                <b>Diagnostic</b><i class="on"></i><i></i>
+                <b>Terrain</b><i></i><i></i><i></i>
+                <b>Huilerie</b><i></i><i></i>
+              </aside>
+              <div class="mock-main">
+                <div class="mock-kpis">
+                  <div><small>Stress hydrique</small><strong>0,27</strong><em class="amber">Modéré</em></div>
+                  <div><small>Acidité huilerie</small><strong>0,77 %</strong><em class="green">Extra vierge</em></div>
+                  <div><small>Scans</small><strong>6</strong><em>dont 4 en stress</em></div>
+                </div>
+                <div class="mock-chart">
+                  <svg viewBox="0 0 320 110" preserveAspectRatio="none">
+                    <path d="M0 90 C25 88 40 80 70 82 S110 96 140 70 S190 20 220 28 S280 34 320 24" fill="none" stroke="#079A79" stroke-width="2.4"/>
+                    <path d="M0 90 C25 88 40 80 70 82 S110 96 140 70 S190 20 220 28 S280 34 320 24 V110 H0Z" fill="rgba(7,154,121,.12)"/>
+                    <path d="M0 100 C40 96 70 92 110 90 S200 76 250 66 S300 58 320 52" fill="none" stroke="#D9AA36" stroke-width="2" stroke-dasharray="5 5"/>
+                  </svg>
+                </div>
+                <div class="mock-alert"><span class="badge badge-red">Sévère</span><span>Stress hydrique — Parcelle 01</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="phone">
+            <div class="phone-notch"></div>
+            <p class="phone-title">Alerte OleaSense</p>
+            <p class="bubble">Stress hydrique sévère détecté sur la parcelle 01. Irrigation recommandée dans les 48 h.</p>
+            <p class="phone-time">À l'instant</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pour qui -->
+    <section id="utilisateurs" class="section section-deep" aria-labelledby="titre-utilisateurs">
+      <div class="container">
+        <div class="section-head section-head-light reveal">
+          <p class="eyebrow">Pour qui</p>
+          <h2 id="titre-utilisateurs">Un outil pour chaque métier</h2>
+        </div>
+        <div class="people">
+          <article class="reveal">
+            <svg class="icon icon-lg" aria-hidden="true"><use href="#i-chart"/></svg>
+            <h3>Agronomes</h3>
+            <p>Analyser les parcelles, comparer les scans et prioriser les interventions.</p>
+          </article>
+          <article class="reveal">
+            <svg class="icon icon-lg" aria-hidden="true"><use href="#i-leaf"/></svg>
+            <h3>Régisseurs</h3>
+            <p>Consulter l'état du verger et recevoir les alertes utiles, simplement.</p>
+          </article>
+          <article class="reveal">
+            <svg class="icon icon-lg" aria-hidden="true"><use href="#i-flask"/></svg>
+            <h3>Responsables d'huilerie</h3>
+            <p>Suivre les lots, l'acidité et la conformité, et remonter l'origine d'un lot.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Engagements -->
+    <section id="engagements" class="section" aria-labelledby="titre-engagements">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow eyebrow-dark">Engagements</p>
+          <h2 id="titre-engagements">Une approche fiable, ouverte et utile</h2>
+        </div>
+        <div class="commit-grid">
+          <article class="reveal">
+            <span class="card-icon"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-layers"/></svg></span>
+            <h3>Des données variées pour croiser et confronter le diagnostic</h3>
+            <p>Sources ouvertes (images satellite, sols, climat) et vos propres mesures (spectres au champ, drone, huilerie) se recoupent pour confirmer ou nuancer chaque résultat, à un coût d'accès maîtrisé.</p>
+          </article>
+          <article class="reveal">
+            <span class="card-icon card-icon-teal"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-eye"/></svg></span>
+            <h3>Des résultats explicables</h3>
+            <p>Chaque indicateur est présenté avec sa date et sa source, sans boîte noire.</p>
+          </article>
+          <article class="reveal">
+            <span class="card-icon card-icon-gold"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-globe"/></svg></span>
+            <h3>Adapté à chaque verger</h3>
+            <p>Régions, variétés locales et contraintes de terrain propres à chaque pays.</p>
+          </article>
+          <article class="reveal">
+            <span class="card-icon"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-bell"/></svg></span>
+            <h3>Utilisable au quotidien</h3>
+            <p>Application installable et alertes par SMS.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="cta" aria-labelledby="titre-contact">
+      <canvas class="cta-canvas" aria-hidden="true"></canvas>
+      <div class="container cta-inner reveal">
+        <p class="eyebrow">Contact</p>
+        <h2 id="titre-contact">Parlons de vos parcelles et de votre huilerie</h2>
+        <p class="lead">Nous organisons des démonstrations avec vos propres données. Écrivez-nous en quelques lignes : votre région, la taille de vos vergers et ce que vous souhaitez mieux piloter.</p>
+        <div class="hero-actions">
+          <a class="button button-gold" href="mailto:contact@oleasense.com?subject=Demande%20de%20d%C3%A9monstration%20OleaSense">Écrire à l'équipe OleaSense</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <img class="footer-logo" src="assets/logo-sur-fond-vert.png" alt="OleaSense — Spectral Intelligence" width="523" height="223">
+      <p>Plateforme de diagnostic hyperspectral et d'intelligence artificielle pour l'oléiculture.</p>
+      <nav aria-label="Pied de page">
+        <ul>
+          <li><a href="#lumiere">La lumière</a></li>
+          <li><a href="#solutions">Solutions</a></li>
+          <li><a href="#application">Application</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <p class="legal">© 2026 OleaSense. Tous droits réservés. <a href="mentions-legales.html">Mentions légales</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js?v=8" defer></script>
+</body>
+</html>
