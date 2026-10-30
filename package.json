@@ -1,0 +1,9 @@
+{
+  "name": "oleasense-website",
+  "private": true,
+  "type": "module",
+  "description": "Site institutionnel OleaSense (statique, publié depuis docs/)",
+  "scripts": {
+    "test": "node --test"
+  }
+}
