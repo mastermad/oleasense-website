@@ -306,3 +306,12 @@ input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius
 .roi-result { font-weight: 600; color: var(--deep); margin-bottom: 2.5rem; }
 .faq details { background: #fff; border-radius: 12px; padding: .9rem 1.1rem; margin-bottom: .6rem; }
 .faq summary { cursor: pointer; font-weight: 600; }
+
+/* Page À propos */
+.apropos-steps { padding-left: 1.2rem; color: var(--muted); }
+.apropos-steps li { margin-bottom: .6rem; }
+.lead.apropos-lead { color: var(--muted); }
+.apropos-note { font-size: .9rem; color: var(--muted); }
+.contact-form { display: grid; gap: .6rem; max-width: 560px; }
+.contact-form input, .contact-form textarea { font: inherit; padding: .6rem; border: 1px solid var(--muted); border-radius: 8px; background: #fff; }
+.contact-form input:focus-visible, .contact-form textarea:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }

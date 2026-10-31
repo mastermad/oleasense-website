@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>À propos — OleaSense</title>
+  <meta name="description" content="La mission d'OleaSense, sa méthodologie scientifique, son équipe et un formulaire de contact général.">
+  <meta name="theme-color" content="#123D2E">
+  <link rel="icon" type="image/png" href="assets/icone-application.png">
+  <link rel="canonical" href="https://oleasense.com/a-propos.html">
+  <link rel="preload" href="assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=10">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <header class="site-header is-scrolled">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="OleaSense — accueil">
+        <img src="assets/logo-principal.png" alt="OleaSense — Spectral Intelligence" width="1155" height="425">
+      </a>
+      <nav aria-label="Navigation principale">
+        <a class="button button-small" href="index.html">Retour au site</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">À propos</p>
+          <h1>La lumière au service de l'oléiculture</h1>
+          <p class="lead apropos-lead">OleaSense développe une plateforme de diagnostic hyperspectral et d'intelligence artificielle pour aider les oléiculteurs et les huileries à mieux piloter leurs vergers et leur récolte.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="mission" class="section section-tint" aria-labelledby="titre-mission">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="titre-mission">Notre mission et notre ancrage</h2>
+          <p>Rendre visible ce que l'œil ne voit pas : lire la lumière réfléchie par l'olivier pour éclairer les décisions de la parcelle à l'huilerie.</p>
+          <p>OleaSense est implantée à Fleury-les-Aubrais (Loiret, France), où se situe son siège social.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="methodologie" class="section" aria-labelledby="titre-methodologie">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="titre-methodologie">Une méthodologie scientifique</h2>
+          <p>Notre approche repose sur l'analyse du spectre de la lumière réfléchie par les feuilles et les fruits. Les étapes ci-dessous sont présentées à titre indicatif et pédagogique.</p>
+        </div>
+        <ol class="apropos-steps">
+          <li>Mesure du spectre lumineux réfléchi par l'arbre et les olives.</li>
+          <li>Interprétation des signatures spectrales pour estimer l'état de la parcelle et la maturité des fruits.</li>
+          <li>Aide au choix du moment de récolte à partir de ces indicateurs.</li>
+          <li>Restitution de résultats explicables, que l'exploitant peut comprendre et confronter à son expérience.</li>
+        </ol>
+        <p class="apropos-note">Contenu indicatif : les illustrations du site sont pédagogiques et n'engagent pas de résultat.</p>
+      </div>
+    </section>
+
+    <section id="equipe" class="section section-tint" aria-labelledby="titre-equipe">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="titre-equipe">L'équipe</h2>
+        </div>
+        <div class="commit-grid">
+          <article>
+            <h3>OleaSense</h3>
+            <p>Société par actions simplifiée unipersonnelle (SASU) dont le siège social est à Fleury-les-Aubrais, France.</p>
+          </article>
+          <article>
+            <h3>Mohamed Ben Soltana</h3>
+            <p>Président et directeur de la publication.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact-general" class="section" aria-labelledby="titre-contact-general">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="titre-contact-general">Nous contacter</h2>
+          <p>Une question générale ? Écrivez-nous : le message s'ouvrira dans votre messagerie.</p>
+        </div>
+        <form id="form-contact" class="contact-form" method="post" enctype="text/plain" action="mailto:contact@oleasense.com">
+          <label for="contact-nom">Nom</label>
+          <input id="contact-nom" name="nom" type="text" autocomplete="name" required>
+          <label for="contact-email">Adresse e-mail</label>
+          <input id="contact-email" name="email" type="email" autocomplete="email" required>
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" rows="6" required></textarea>
+          <button class="button" type="submit">Envoyer</button>
+        </form>
+        <p class="apropos-note">L'envoi s'effectue via votre messagerie. Voir les <a href="mentions-legales.html">mentions légales</a> pour le traitement de vos données.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <nav aria-label="Pied de page">
+        <ul>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="index.html">Accueil</a></li>
+        </ul>
+      </nav>
+      <p class="legal">© 2026 OleaSense. Tous droits réservés. <a href="mentions-legales.html">Mentions légales</a></p>
+    </div>
+  </footer>
+</body>
+</html>
