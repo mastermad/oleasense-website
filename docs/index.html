@@ -50,6 +50,7 @@
       <nav id="menu-principal" class="main-nav" aria-label="Navigation principale">
         <ul>
           <li><a href="#lumiere">La lumière</a></li>
+          <li><a href="#recolte">Timing de récolte</a></li>
           <li><a href="#solutions">Solutions</a></li>
           <li><a href="#parcours">Du verger à l'huile</a></li>
           <li><a href="#application">Application</a></li>
@@ -155,6 +156,70 @@
             <input id="spectre-stress" type="range" min="0" max="100" value="0" aria-describedby="spectre-message">
           </div>
           <p id="spectre-message" class="spectrum-message" aria-live="polite">Forte absorption de la chlorophylle dans le rouge et plateau élevé dans le proche infrarouge : l'arbre est en bonne santé.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timing de récolte -->
+    <section id="recolte" class="section section-tint" aria-labelledby="titre-recolte">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow eyebrow-dark">Timing de récolte</p>
+          <h2 id="titre-recolte">Récolter au bon moment, pas à date fixe.</h2>
+          <p class="prose">Un calendrier de récolte fixe ignore l'avance ou le retard de la saison : chaque parcelle mûrit à son rythme. OleaSense vise un pilotage par la donnée : suivi continu de la synthèse lipidique (lipogenèse) et de l'humidité du fruit par imagerie hyperspectrale (PRISMA, EnMAP) et multispectrale (Sentinel-2), pour repérer la fenêtre où le rendement en huile et le profil Vierge Extra se rejoignent.</p>
+        </div>
+
+        <div class="recolte-grid">
+          <div class="spectrum reveal" id="maturite">
+            <div class="spectrum-head">
+              <p class="badge" id="maturite-badge">Récolte précoce</p>
+              <p class="spectrum-legend"><span class="dot dot-live"></span> Accumulation d'huile <span class="dot dot-ref"></span> Polyphénols / acidité</p>
+            </div>
+            <svg id="maturite-svg" viewBox="0 0 640 320" role="img" aria-labelledby="maturite-titre maturite-desc">
+              <title id="maturite-titre">Maturité du fruit : huile, polyphénols et fenêtre optimale</title>
+              <desc id="maturite-desc">La courbe d'accumulation d'huile monte, celle des polyphénols descend. Elles se croisent au milieu d'une fenêtre optimale de 7 jours.</desc>
+            </svg>
+            <div class="spectrum-control">
+              <label for="maturite-curseur">Jour de récolte dans la saison</label>
+              <input id="maturite-curseur" type="range" min="0" max="60" step="1" value="10" aria-describedby="maturite-message">
+            </div>
+            <p id="maturite-message" class="spectrum-message" aria-live="polite">Déplacez le curseur pour voir l'état de maturité.</p>
+          </div>
+          <p class="note">Illustration pédagogique, non issue de mesures réelles.</p>
+        </div>
+
+        <div class="table-wrap reveal">
+          <table id="matrice-recolte" class="matrice">
+            <caption>Comparaison de trois stratégies de récolte</caption>
+            <thead>
+              <tr>
+                <th scope="col">Stratégie</th>
+                <th scope="col">Volume d'huile</th>
+                <th scope="col">Qualité et acidité</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Récolte précoce</th>
+                <td>Perte de volume d'huile</td>
+                <td>Qualité élevée, polyphénols abondants</td>
+              </tr>
+              <tr>
+                <th scope="row">Récolte tardive</th>
+                <td>Volume élevé</td>
+                <td>Acidité au-delà de 0,8 % et chute des polyphénols</td>
+              </tr>
+              <tr>
+                <th scope="row">Récolte ciblée OleaSense</th>
+                <td>Rendement en huile maximal visé</td>
+                <td>Dans les critères Vierge Extra</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="hero-actions">
+          <a class="button button-gold" id="recolte-cta" href="#contact">Tester l'estimation de récolte sur mon domaine</a>
         </div>
       </div>
     </section>
@@ -394,6 +459,7 @@
       <nav aria-label="Pied de page">
         <ul>
           <li><a href="#lumiere">La lumière</a></li>
+          <li><a href="#recolte">Timing de récolte</a></li>
           <li><a href="#solutions">Solutions</a></li>
           <li><a href="#application">Application</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -404,6 +470,7 @@
   </footer>
 
   <script src="script.js?v=8" defer></script>
+  <script src="maturite.js" defer></script>
   <script src="roi.js" defer></script>
   <script src="offres.js" defer></script>
 </body>

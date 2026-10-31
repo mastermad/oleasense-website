@@ -280,6 +280,21 @@ input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius
   .hero-video { display: none; }
 }
 
+/* Timing de récolte */
+.recolte-grid { margin-bottom: 2rem; }
+#maturite-svg { width: 100%; height: auto; }
+#maturite-svg text { fill: rgba(255, 255, 255, .85); font-size: 13px; font-family: var(--font); }
+#maturite-svg .axis { stroke: rgba(255, 255, 255, .35); stroke-width: 1; }
+.table-wrap { overflow-x: auto; margin-bottom: 2rem; }
+.matrice { width: 100%; min-width: 34rem; border-collapse: collapse; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); }
+.matrice caption { text-align: left; font-weight: 700; padding: .8rem 1rem; color: var(--deep); }
+.matrice th, .matrice td { text-align: left; padding: .8rem 1rem; border-top: 1px solid #d5e0d3; color: var(--ink); vertical-align: top; }
+.matrice thead th { background: var(--deep); color: #fff; border-top: 0; }
+#maturite-curseur:focus-visible { outline: 3px solid var(--gold); outline-offset: 6px; }
+@media (prefers-reduced-motion: reduce) {
+  #maturite-svg * { transition: none; }
+}
+
 /* Offres & calculateur ROI */
 .offres-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem; }
 .offre-card { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; }
