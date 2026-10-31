@@ -50,10 +50,23 @@
   --shadow-raised: 0 26px 60px rgba(18, 61, 46, 0.16);
   --shadow: 0 18px 45px rgba(18, 61, 46, 0.12);
   --font: "Montserrat", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --scroll-thumb: rgba(18, 61, 46, 0.6);
+  --scroll-thumb-hover: rgba(18, 61, 46, 0.85);
+  --scroll-track: transparent;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+
+/* Barres de défilement (US-965) : style unique, appliqué à la page et à tous les conteneurs défilants. */
+* { scrollbar-width: thin; scrollbar-color: var(--scroll-thumb) var(--scroll-track); }
+@supports not (scrollbar-color: auto) {
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: var(--scroll-track); }
+  ::-webkit-scrollbar-thumb { background: var(--scroll-thumb); background-clip: padding-box; border: 2px solid transparent; border-radius: 999px; }
+  ::-webkit-scrollbar-thumb:hover, ::-webkit-scrollbar-thumb:active { background: var(--scroll-thumb-hover); background-clip: padding-box; }
+  ::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
+}
 body { margin: 0; font-family: var(--font); color: var(--ink); background: var(--cream); line-height: 1.65; }
 img, svg { max-width: 100%; display: block; }
 img { height: auto; }
@@ -370,6 +383,7 @@ input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius
 #maturite-svg text { fill: rgba(255, 255, 255, .85); font-size: 13px; font-family: var(--font); }
 #maturite-svg .axis { stroke: rgba(255, 255, 255, .35); stroke-width: 1; }
 .table-wrap { overflow-x: auto; margin-bottom: 2rem; }
+.table-wrap:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
 .matrice { width: 100%; min-width: 34rem; border-collapse: collapse; background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); }
 .matrice caption { text-align: left; font-weight: 700; padding: .8rem 1rem; color: var(--deep); }
 .matrice th, .matrice td { text-align: left; padding: .8rem 1rem; border-top: 1px solid #d5e0d3; color: var(--ink); vertical-align: top; }

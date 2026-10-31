@@ -60,6 +60,6 @@ test('CA5 : navigation, sitemap, aucun stockage ni traceur', () => {
   assert.equal((index.match(/href="a-propos\.html"/g) ?? []).length, 2);
   assert.match(read('sitemap.xml'), /<loc>https:\/\/oleasense\.com\/a-propos\.html<\/loc>/);
   assert.doesNotMatch(html, /cookie|localStorage|sessionStorage/i);
-  assert.match(html, /styles\.css\?v=12/);
-  assert.match(index, /styles\.css\?v=12/);
+  assert.match(html, /styles\.css\?v=13/);
+  assert.match(index, /styles\.css\?v=13/);
 });

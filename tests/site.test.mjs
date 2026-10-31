@@ -92,6 +92,88 @@ test('simulations.html : ids uniques', () => {
   assert.equal(new Set(ids).size, ids.length);
 });
 
+const css = readDoc('styles.css');
+const rootVar = name => new RegExp(`--${name}:\\s*([^;]+);`).exec(css)?.[1].trim();
+
+test('barres de défilement : règles globales uniques dans styles.css', () => {
+  assert.equal((css.match(/scrollbar-width:\s*thin/g) ?? []).length, 1);
+  assert.equal((css.match(/scrollbar-color:\s*var\(--scroll-thumb\) var\(--scroll-track\)/g) ?? []).length, 1);
+  assert.match(css, /::-webkit-scrollbar\s*\{\s*width:\s*8px;\s*height:\s*8px;\s*\}/);
+  assert.match(css, /::-webkit-scrollbar-track\s*\{\s*background:\s*var\(--scroll-track\)/);
+  assert.match(css, /::-webkit-scrollbar-thumb\s*\{[^}]*background-clip:\s*padding-box;[^}]*border:\s*2px solid transparent;[^}]*border-radius:\s*999px/);
+  assert.match(css, /::-webkit-scrollbar-button\s*\{\s*display:\s*none/);
+  assert.equal(rootVar('scroll-track'), 'transparent');
+});
+
+test('barres de défilement : aucune redéfinition locale ni couleur en dur', () => {
+  assert.doesNotMatch(readDoc('consent.css'), /scrollbar/);
+  for (const page of pages) assert.doesNotMatch(readFileSync(page, 'utf8'), /scrollbar/, rel(page));
+  const scrollRules = css.split('\n').filter(line => /scrollbar/.test(line) && !/^\s*(\/\*|\*|@supports)/.test(line));
+  for (const line of scrollRules) assert.doesNotMatch(line, /#[0-9a-f]{3,6}\b|rgba?\(/i, line);
+});
+
+const alpha = value => Number(/rgba\([^,]+,[^,]+,[^,]+,\s*([\d.]+)\)/.exec(value)?.[1]);
+const rgb = value => /rgba\((\d+),\s*(\d+),\s*(\d+)/.exec(value).slice(1, 4).map(Number);
+
+test('barres de défilement : pouce translucide plus soutenu au survol, contraste ≥ 3:1', async () => {
+  const { contrastRatio } = await import('./contrast.mjs');
+  const thumb = rootVar('scroll-thumb');
+  const hover = rootVar('scroll-thumb-hover');
+  assert.ok(alpha(hover) > alpha(thumb));
+  assert.ok(alpha(thumb) < 1);
+  const cream = rootVar('cream');
+  const base = rgb('rgba(250, 249, 245, 1)');
+  const hex = ([r, g, b]) => `#${[r, g, b].map(c => Math.round(c).toString(16).padStart(2, '0')).join('')}`;
+  for (const value of [thumb, hover]) {
+    const [r, g, b] = rgb(value);
+    const a = alpha(value);
+    const composite = [r, g, b].map((c, i) => c * a + base[i] * (1 - a));
+    assert.ok(contrastRatio(hex(composite), cream) >= 3, value);
+  }
+  assert.match(css, /::-webkit-scrollbar-thumb:hover,\s*::-webkit-scrollbar-thumb:active\s*\{[^}]*var\(--scroll-thumb-hover\)/);
+});
+
+test('défilement doux et mouvements réduits conservés', () => {
+  assert.match(css, /html\s*\{\s*scroll-behavior:\s*smooth;\s*scroll-padding-top:\s*5rem;\s*\}/);
+  assert.match(css, /@media \(prefers-reduced-motion: reduce\)[\s\S]*html\s*\{\s*scroll-behavior:\s*auto;/);
+  assert.doesNotMatch(css, /scrollbar-gutter/);
+});
+
+test('simulations.html : table-wrap atteignable au clavier avec nom accessible', () => {
+  const html = readDoc('simulations.html');
+  const tag = /<div class="table-wrap[^"]*"[^>]*>/.exec(html)?.[0] ?? '';
+  assert.match(tag, /tabindex="0"/);
+  assert.match(tag, /role="region"/);
+  const label = /aria-label="([^"]+)"/.exec(tag)?.[1];
+  assert.ok(label);
+  assert.ok(html.includes(`<caption>${label}</caption>`));
+  assert.match(css, /\.table-wrap:focus-visible\s*\{[^}]*var\(--focus\)/);
+});
+
+test('barres de défilement : pouce vert foncé de la charte (--deep) translucide au repos', () => {
+  assert.equal(rootVar('deep'), '#123d2e');
+  assert.equal(rootVar('scroll-thumb'), 'rgba(18, 61, 46, 0.6)');
+  assert.equal(rootVar('scroll-thumb-hover'), 'rgba(18, 61, 46, 0.85)');
+});
+
+test('barres de défilement : règles ::-webkit-scrollbar réservées au repli @supports not (scrollbar-color)', () => {
+  const fallback = /@supports not \(scrollbar-color: auto\)\s*\{([\s\S]*?)\n\}/.exec(css)?.[1] ?? '';
+  assert.match(fallback, /::-webkit-scrollbar\s*\{\s*width:\s*8px;\s*height:\s*8px;\s*\}/);
+  assert.match(fallback, /::-webkit-scrollbar-thumb:hover,\s*::-webkit-scrollbar-thumb:active/);
+  assert.match(fallback, /::-webkit-scrollbar-button\s*\{\s*display:\s*none/);
+});
+
+test('barres de défilement : seules zones défilantes .main-nav (mobile) et .table-wrap, sans double ascenseur CSS', () => {
+  const scrollers = [...css.matchAll(/([^{}]+)\{[^{}]*overflow(?:-[xy])?:\s*(?:auto|scroll)\b[^{}]*\}/g)].map(match => match[1].trim()).sort();
+  assert.deepEqual(scrollers, ['.main-nav', '.table-wrap']);
+  assert.match(css, /@media \(max-width: 1023px\)[\s\S]*\.main-nav\s*\{[^}]*overflow-y:\s*auto/);
+});
+
+test('barres de défilement : aucune bibliothèque de défilement ni script ajouté', () => {
+  assert.doesNotMatch(css, /<script|javascript:/i);
+  for (const page of pages) assert.doesNotMatch(readFileSync(page, 'utf8'), /simplebar|overlayscrollbars|perfect-?scrollbar|lenis|locomotive/i, rel(page));
+});
+
 for (const page of pages) {
   const html = readFileSync(page, 'utf8');
 

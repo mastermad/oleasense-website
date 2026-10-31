@@ -198,7 +198,7 @@ test('CA6 : ids uniques', () => {
 
 test('CA6 : scripts menu avant script.js, versions de cache à jour, aucune ressource externe', () => {
   assert.ok(html.indexOf('menu.js?v=2') > -1 && html.indexOf('menu.js?v=2') < html.indexOf('script.js?v=11'));
-  assert.match(html, /styles\.css\?v=12/);
+  assert.match(html, /styles\.css\?v=13/);
   assert.doesNotMatch(read('menu.js'), /https?:\/\//);
   for (const name of ['consent.js', 'lead.js', 'conversion.js']) assert.ok(read(name).length > 0);
 });
