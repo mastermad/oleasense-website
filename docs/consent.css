@@ -1,0 +1,17 @@
+/* Consentement (US-928) : jetons de styles.css */
+.consent-banner { position: fixed; left: 1rem; right: 1rem; bottom: 1rem; z-index: 50; max-width: 760px; margin: 0 auto; background: var(--cream); color: var(--ink); border: 2px solid var(--deep); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.2rem 1.4rem; }
+.consent-title { font-size: 1.1rem; margin: 0 0 .4rem; color: var(--deep); }
+.consent-banner p { margin: 0 0 .8rem; color: var(--muted); }
+.consent-actions { display: flex; flex-wrap: wrap; gap: .6rem; }
+.consent-banner .button { cursor: pointer; font-family: inherit; }
+.consent-banner .button-outline { background: transparent; color: var(--deep); }
+.consent-banner .button-outline:hover { background: var(--deep); color: #fff; }
+.consent-details { margin-top: .9rem; display: grid; gap: .5rem; }
+.consent-details[hidden], .consent-manage[hidden] { display: none; }
+.consent-option { display: flex; gap: .6rem; align-items: flex-start; color: var(--ink); }
+.consent-option input { margin-top: .25rem; width: 1.1rem; height: 1.1rem; accent-color: var(--deep); }
+.consent-manage { background: none; border: 0; padding: 0; margin-left: .6rem; font: inherit; font-size: .85rem; color: #fff; text-decoration: underline; cursor: pointer; }
+@media (prefers-reduced-motion: reduce) {
+  .consent-banner .button { transition: none; }
+  .consent-banner .button:hover { transform: none; }
+}

@@ -2,3 +2,5 @@ node_modules/
 .git/
 .secrets/
 *.env
+internal/
+!internal/registre-traitement-prospects.md
