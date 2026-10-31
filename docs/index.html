@@ -15,7 +15,7 @@
   <meta property="og:description" content="Imagerie hyperspectrale, satellite, drone et intelligence artificielle pour décider plus tôt, du verger à l'huile.">
   <meta property="og:url" content="https://oleasense.com/">
   <link rel="preload" href="assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=10">
+  <link rel="stylesheet" href="styles.css?v=11">
   <link rel="stylesheet" href="consent.css">
 </head>
 <body>
@@ -44,6 +44,7 @@
       <a class="brand" href="#accueil" aria-label="OleaSense — accueil">
         <img src="assets/logo-principal.png" alt="OleaSense — Spectral Intelligence" width="1155" height="425">
       </a>
+      <a class="button button-small header-cta" href="#contact">Demander une démonstration</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
         <span class="nav-toggle-bar" aria-hidden="true"></span>
         <span class="visually-hidden">Menu</span>
@@ -52,13 +53,44 @@
         <ul>
           <li><a href="#lumiere">La lumière</a></li>
           <li><a href="#recolte">Timing de récolte</a></li>
-          <li><a href="#solutions">Solutions</a></li>
+          <li class="has-mega">
+            <a id="solutions-lien" href="#solutions">Solutions</a>
+            <button id="solutions-bouton" class="mega-toggle" type="button" aria-expanded="false" aria-controls="mega-solutions">
+              <span class="visually-hidden">Afficher le sous-menu Solutions</span>
+              <span class="mega-chevron" aria-hidden="true"></span>
+            </button>
+            <div id="mega-solutions" class="mega-panel" hidden>
+              <div class="mega-col" role="group" aria-labelledby="mega-titre-domaines">
+                <p class="mega-titre" id="mega-titre-domaines">Domaines</p>
+                <ul>
+                  <li><a href="#solution-field">OleaSense Field</a></li>
+                  <li><a href="#lumiere">La lumière</a></li>
+                  <li><a href="#titre-recolte">Timing de récolte</a></li>
+                </ul>
+              </div>
+              <div class="mega-col" role="group" aria-labelledby="mega-titre-huileries">
+                <p class="mega-titre" id="mega-titre-huileries">Huileries</p>
+                <ul>
+                  <li><a href="#solution-mill">OleaSense Mill</a></li>
+                  <li><a href="#parcours">Du verger à l'huile</a></li>
+                  <li><a href="#application">Application</a></li>
+                </ul>
+              </div>
+              <div class="mega-col" role="group" aria-labelledby="mega-titre-cooperatives">
+                <p class="mega-titre" id="mega-titre-cooperatives">Coopératives</p>
+                <ul>
+                  <li><a href="#solution-pont">Le pont agro-huilerie</a></li>
+                  <li><a href="#utilisateurs">Pour qui</a></li>
+                  <li><a href="#offres">Offres</a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
           <li><a href="#parcours">Du verger à l'huile</a></li>
           <li><a href="#application">Application</a></li>
           <li><a href="#utilisateurs">Pour qui</a></li>
           <li><a href="#offres">Offres</a></li>
           <li><a href="a-propos.html">À propos</a></li>
-          <li><a class="button button-small" href="#contact">Demander une démonstration</a></li>
         </ul>
       </nav>
     </div>
@@ -234,7 +266,7 @@
           <h2 id="titre-solutions">Une plateforme pour toute la filière</h2>
         </div>
         <div class="cards">
-          <article class="card reveal">
+          <article id="solution-field" class="card reveal">
             <span class="card-icon"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-sprout"/></svg></span>
             <h3>OleaSense Field</h3>
             <p class="card-tag">Pour le verger</p>
@@ -245,7 +277,7 @@
               <li>Bilan hydrique, simulateur de dose d'eau et prescription d'irrigation exportable</li>
             </ul>
           </article>
-          <article class="card reveal">
+          <article id="solution-mill" class="card reveal">
             <span class="card-icon card-icon-teal"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-flask"/></svg></span>
             <h3>OleaSense Mill</h3>
             <p class="card-tag">Pour l'huilerie</p>
@@ -256,7 +288,7 @@
               <li>Traçabilité d'un lot jusqu'à sa parcelle d'origine</li>
             </ul>
           </article>
-          <article class="card reveal">
+          <article id="solution-pont" class="card reveal">
             <span class="card-icon card-icon-gold"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-layers"/></svg></span>
             <h3>Le pont agro-huilerie</h3>
             <p class="card-tag">Pour toute la filière</p>
@@ -513,7 +545,8 @@
         <script src="consent.js" defer></script>
   <script src="config.js" defer></script>
   <script src="lead.js" defer></script>
-  <script src="script.js?v=9" defer></script>
+  <script src="menu.js?v=1" defer></script>
+  <script src="script.js?v=10" defer></script>
   <script src="maturite.js" defer></script>
   <script src="roi.js" defer></script>
   <script src="offres.js" defer></script>

@@ -10,10 +10,50 @@ function setMenu(open) {
   toggle.setAttribute('aria-expanded', String(open));
   menu.classList.toggle('is-open', open);
 }
+
+/* Méga-menu « Solutions » : sans JavaScript, le lien #solutions reste actif */
+document.documentElement.classList.add('js');
+const mega = document.querySelector('.has-mega');
+const megaButton = document.getElementById('solutions-bouton');
+const megaPanel = document.getElementById('mega-solutions');
+const hoverQuery = window.matchMedia('(hover: hover) and (min-width: 1101px)');
+let megaByHover = false;
+
+function setMega(open) {
+  megaButton.setAttribute('aria-expanded', String(open));
+  megaPanel.hidden = !open;
+  mega.classList.toggle('is-open', open);
+  if (!open) megaByHover = false;
+}
+if (mega && megaButton && megaPanel && window.OleaMenu) {
+  const isMegaOpen = () => megaButton.getAttribute('aria-expanded') === 'true';
+  megaButton.addEventListener('click', () => {
+    if (megaByHover) { megaByHover = false; return; }
+    setMega(OleaMenu.nextState(isMegaOpen(), 'toggle'));
+  });
+  mega.addEventListener('mouseenter', () => {
+    if (!hoverQuery.matches || isMegaOpen()) return;
+    setMega(OleaMenu.nextState(false, 'open'));
+    megaByHover = true;
+  });
+  mega.addEventListener('mouseleave', () => {
+    if (hoverQuery.matches && isMegaOpen()) setMega(OleaMenu.nextState(true, 'close'));
+  });
+  mega.addEventListener('focusout', event => {
+    if (isMegaOpen() && event.relatedTarget && OleaMenu.isOutside(event.relatedTarget, mega)) setMega(OleaMenu.nextState(true, 'focusout'));
+  });
+  document.addEventListener('click', event => {
+    if (isMegaOpen() && OleaMenu.isOutside(event.target, mega)) setMega(OleaMenu.nextState(true, 'outside'));
+  });
+  megaPanel.addEventListener('click', event => { if (event.target.closest('a')) setMega(false); });
+}
+
 toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
 menu.addEventListener('click', event => { if (event.target.closest('a')) setMenu(false); });
 document.addEventListener('keydown', event => {
-  if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { setMenu(false); toggle.focus(); }
+  if (event.key !== 'Escape') return;
+  if (megaButton && megaButton.getAttribute('aria-expanded') === 'true') { setMega(false); megaButton.focus(); return; }
+  if (toggle.getAttribute('aria-expanded') === 'true') { setMenu(false); toggle.focus(); }
 });
 const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
 window.addEventListener('scroll', onScroll, { passive: true });
