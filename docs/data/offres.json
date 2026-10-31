@@ -1,0 +1,50 @@
+{
+  "mention": "Valeurs d'illustration — estimation indicative, non contractuelle",
+  "offres": [
+    {
+      "id": "solo",
+      "nom": "Solo",
+      "prixMensuelHT": 49,
+      "description": "Pour un oléiculteur qui suit un domaine de taille modeste.",
+      "inclus": ["Diagnostic par parcelle", "Alertes SMS", "Application installable"]
+    },
+    {
+      "id": "premium",
+      "nom": "Premium",
+      "prixMensuelHT": 129,
+      "description": "Pour un domaine de taille moyenne qui croise plusieurs sources.",
+      "inclus": ["Tout Solo", "Imagerie satellite et drone", "Historique des indicateurs"]
+    },
+    {
+      "id": "moulinier-coop",
+      "nom": "Moulinier / Coop",
+      "prixMensuelHT": 299,
+      "description": "Pour une huilerie ou une coopérative qui suit plusieurs apporteurs.",
+      "inclus": ["Tout Premium", "Suivi multi-vergers", "Accompagnement dédié"]
+    }
+  ],
+  "hypotheses": {
+    "gainParHa": { "solo": 60, "premium": 90, "moulinier-coop": 110 },
+    "surfaceMin": 1,
+    "surfaceMax": 1000,
+    "surfaceDefaut": 20
+  },
+  "faq": [
+    {
+      "question": "Les tarifs affichés sont-ils définitifs ?",
+      "reponse": "Non. Les montants présentés sont des valeurs d'illustration, à confirmer avec l'équipe OleaSense lors d'une démonstration."
+    },
+    {
+      "question": "Comment est calculé le gain estimé ?",
+      "reponse": "Le calculateur multiplie votre surface par un gain moyen par hectare d'illustration, puis retranche le coût annuel de l'offre. C'est une estimation indicative, pas un engagement."
+    },
+    {
+      "question": "Quelle offre choisir selon la taille de mon domaine ?",
+      "reponse": "Testez plusieurs offres dans le calculateur avec votre surface, puis contactez-nous pour valider le choix avec vos propres données."
+    },
+    {
+      "question": "Puis-je changer d'offre ensuite ?",
+      "reponse": "Les conditions de changement d'offre seront précisées lors de votre démonstration."
+    }
+  ]
+}

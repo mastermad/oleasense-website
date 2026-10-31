@@ -279,3 +279,15 @@ input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius
   .button, .card { transition: none; }
   .hero-video { display: none; }
 }
+
+/* Offres & calculateur ROI */
+.offres-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem; }
+.offre-card { background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.5rem; }
+.offre-prix { font-weight: 700; color: var(--deep); }
+.offres-erreur { background: #fff; border-left: 4px solid var(--gold); padding: 1rem; color: var(--ink); }
+.roi-form { display: grid; gap: .6rem; max-width: 420px; margin-bottom: 1rem; }
+.roi-form input, .roi-form select { font: inherit; padding: .6rem; border: 1px solid var(--muted); border-radius: 8px; }
+.roi-form input:focus-visible, .roi-form select:focus-visible, .faq summary:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+.roi-result { font-weight: 600; color: var(--deep); margin-bottom: 2.5rem; }
+.faq details { background: #fff; border-radius: 12px; padding: .9rem 1.1rem; margin-bottom: .6rem; }
+.faq summary { cursor: pointer; font-weight: 600; }

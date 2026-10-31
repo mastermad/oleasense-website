@@ -15,7 +15,7 @@
   <meta property="og:description" content="Imagerie hyperspectrale, satellite, drone et intelligence artificielle pour décider plus tôt, du verger à l'huile.">
   <meta property="og:url" content="https://oleasense.com/">
   <link rel="preload" href="assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=8">
+  <link rel="stylesheet" href="styles.css?v=9">
 </head>
 <body>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -54,6 +54,7 @@
           <li><a href="#parcours">Du verger à l'huile</a></li>
           <li><a href="#application">Application</a></li>
           <li><a href="#utilisateurs">Pour qui</a></li>
+          <li><a href="#offres">Offres</a></li>
           <li><a class="button button-small" href="#contact">Demander une démonstration</a></li>
         </ul>
       </nav>
@@ -345,6 +346,33 @@
       </div>
     </section>
 
+    <!-- Offres & calculateur -->
+    <section id="offres" class="section section-tint" aria-labelledby="titre-offres">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow eyebrow-dark">Offres</p>
+          <h2 id="titre-offres">Choisir la formule adaptée à votre domaine</h2>
+          <p class="lead">Tarifs et gains présentés à titre d'illustration : estimation indicative, non contractuelle.</p>
+        </div>
+        <p id="offres-erreur" class="offres-erreur" role="alert" hidden></p>
+        <noscript><p>Le détail des offres (Solo, Premium, Moulinier / Coop) nécessite JavaScript. Contactez-nous pour une estimation indicative.</p></noscript>
+        <div id="offres-grille" class="offres-grid"></div>
+
+        <h3>Estimer votre gain</h3>
+        <form id="roi-form" class="roi-form">
+          <label for="roi-surface">Surface du domaine (ha)</label>
+          <input id="roi-surface" name="surface" type="text" inputmode="decimal" disabled>
+          <label for="roi-offre">Offre</label>
+          <select id="roi-offre" name="offre" disabled></select>
+          <button class="button" type="submit">Calculer</button>
+        </form>
+        <p id="roi-resultat" class="roi-result" aria-live="polite"></p>
+
+        <h3 id="faq">Questions fréquentes</h3>
+        <div id="faq-liste" class="faq"></div>
+      </div>
+    </section>
+
     <!-- Contact -->
     <section id="contact" class="cta" aria-labelledby="titre-contact">
       <canvas class="cta-canvas" aria-hidden="true"></canvas>
@@ -376,5 +404,7 @@
   </footer>
 
   <script src="script.js?v=8" defer></script>
+  <script src="roi.js" defer></script>
+  <script src="offres.js" defer></script>
 </body>
 </html>
