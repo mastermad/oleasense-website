@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 const docs = resolve(dirname(fileURLToPath(import.meta.url)), '..', 'docs');
 const require = createRequire(import.meta.url);
 const m = require(join(docs, 'maturite.js'));
-const html = readFileSync(join(docs, 'index.html'), 'utf8');
+const html = readFileSync(join(docs, 'simulations.html'), 'utf8');
 
 test('CA2 : courbes monotones et bornées', () => {
   assert.ok(m.oilCurve(0) < m.oilCurve(30) && m.oilCurve(30) < m.oilCurve(60));
@@ -97,23 +97,31 @@ test('CA2 : draw déplace le marqueur et init signale les phases non optimales',
   assert.equal(els['maturite-badge'].textContent, 'Récolte tardive');
 });
 
-test('CA4 : cible du bouton définie une seule fois', () => {
-  assert.equal(m.CTA_TARGET, '#contact');
-  assert.match(html, /id="recolte-cta" href="#contact"/);
+test('CA4 : cible du bouton définie une seule fois (page Simulations : contact sur l\'accueil)', () => {
+  assert.equal(m.CTA_TARGET, 'index.html#contact');
+  assert.match(html, /id="recolte-cta" href="index\.html#contact"/);
   assert.match(html, /Tester l'estimation de récolte sur mon domaine/);
 });
 
-test('CA1/CA3/CA5 : contenu HTML de la section', () => {
-  const section = html.slice(html.indexOf('id="recolte"'), html.indexOf('id="solutions"'));
-  for (const mot of ['PRISMA', 'EnMAP', 'Sentinel-2', '0,8 %', 'Illustration pédagogique', 'matrice-recolte', 'maturite-svg', 'maturite-curseur']) {
+test('CA1/CA3/CA5 : contenu HTML de la comparaison (page Simulations)', () => {
+  const section = html.slice(html.indexOf('id="comparaison"'), html.indexOf('id="gain"'));
+  for (const mot of ['0,8 %', 'Illustration pédagogique', 'matrice-recolte', 'maturite-svg', 'maturite-curseur']) {
     assert.ok(section.includes(mot), mot);
   }
-  assert.match(section, /<h2 id="titre-recolte"/);
+  assert.match(section, /<h2 id="titre-comparaison"/);
   assert.match(section, /<caption>/);
   assert.equal((section.match(/<th scope="col">/g) || []).length, 3);
   assert.equal((section.match(/<th scope="row">/g) || []).length, 3);
   assert.doesNotMatch(section, /garanti/i);
   assert.equal((html.match(/<h1[ >]/g) || []).length, 1);
-  assert.equal((html.match(/href="#recolte"/g) || []).length, 2);
   assert.match(html, /<script src="maturite\.js" defer><\/script>/);
+});
+
+test('CA1 : la section récolte de l\'accueil garde le texte et renvoie vers la comparaison', () => {
+  const index = readFileSync(join(docs, 'index.html'), 'utf8');
+  const section = index.slice(index.indexOf('id="recolte"'), index.indexOf('id="solutions"'));
+  for (const mot of ['PRISMA', 'EnMAP', 'Sentinel-2', 'Comparer les trois stratégies']) assert.ok(section.includes(mot), mot);
+  assert.match(section, /<h2 id="titre-recolte"/);
+  assert.match(section, /href="simulations\.html#comparaison"/);
+  assert.doesNotMatch(section, /matrice-recolte|maturite-svg/);
 });

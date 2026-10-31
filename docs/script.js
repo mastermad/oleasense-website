@@ -11,48 +11,77 @@ function setMenu(open) {
   menu.classList.toggle('is-open', open);
 }
 
-/* Méga-menu « Solutions » : sans JavaScript, le lien #solutions reste actif */
+/* Sous-menus Solutions / Produits / Simulations : sans JavaScript, chaque libellé pointe vers sa première option */
 document.documentElement.classList.add('js');
-const mega = document.querySelector('.has-mega');
-const megaButton = document.getElementById('solutions-bouton');
-const megaPanel = document.getElementById('mega-solutions');
-const hoverQuery = window.matchMedia('(hover: hover) and (min-width: 1101px)');
-let megaByHover = false;
+const hoverQuery = window.matchMedia('(hover: hover) and (min-width: 1024px)');
+const megas = [];
 
-function setMega(open) {
-  megaButton.setAttribute('aria-expanded', String(open));
-  megaPanel.hidden = !open;
-  mega.classList.toggle('is-open', open);
-  if (!open) megaByHover = false;
+/**
+ * Ouvre ou ferme un sous-menu et met à jour ses attributs ARIA.
+ * Effet de bord : réécrit `entry.state` ; fermer annule la fermeture temporisée en attente.
+ *
+ * @param {{button: HTMLElement, panel: HTMLElement, item: HTMLElement, state: object, closer: object}} entry sous-menu cible
+ * @param {boolean} open nouvel état d'ouverture
+ * @param {boolean} [byHover=false] vrai si l'ouverture vient du survol (fermeture automatique à la sortie)
+ */
+function setMega(entry, open, byHover = false) {
+  entry.button.setAttribute('aria-expanded', String(open));
+  entry.panel.hidden = !open;
+  entry.item.classList.toggle('is-open', open);
+  entry.state = { open, byHover: open && byHover };
+  if (!open) entry.closer.cancel();
 }
-if (mega && megaButton && megaPanel && window.OleaMenu) {
-  const isMegaOpen = () => megaButton.getAttribute('aria-expanded') === 'true';
-  megaButton.addEventListener('click', () => {
-    if (megaByHover) { megaByHover = false; return; }
-    setMega(OleaMenu.nextState(isMegaOpen(), 'toggle'));
-  });
-  mega.addEventListener('mouseenter', () => {
-    if (!hoverQuery.matches || isMegaOpen()) return;
-    setMega(OleaMenu.nextState(false, 'open'));
-    megaByHover = true;
-  });
-  mega.addEventListener('mouseleave', () => {
-    if (hoverQuery.matches && isMegaOpen()) setMega(OleaMenu.nextState(true, 'close'));
-  });
-  mega.addEventListener('focusout', event => {
-    if (isMegaOpen() && event.relatedTarget && OleaMenu.isOutside(event.relatedTarget, mega)) setMega(OleaMenu.nextState(true, 'focusout'));
-  });
+
+/**
+ * Ouvre un sous-menu en fermant les autres : un seul sous-menu reste ouvert à la fois.
+ *
+ * @param {object} entry sous-menu à ouvrir (voir `setMega`)
+ * @param {boolean} byHover vrai si l'ouverture vient du survol
+ */
+function openMega(entry, byHover) {
+  const flags = OleaMenu.openOnly(megas.length, megas.indexOf(entry));
+  megas.forEach((other, index) => { if (other !== entry && !flags[index] && other.state.open) setMega(other, false); });
+  setMega(entry, true, byHover);
+}
+
+if (window.OleaMenu) {
+  for (const item of document.querySelectorAll('.has-mega')) {
+    const button = item.querySelector('.mega-toggle');
+    const panel = item.querySelector('.mega-panel');
+    if (!button || !panel) continue;
+    const entry = { item, button, panel, state: { open: false, byHover: false } };
+    entry.closer = OleaMenu.createCloser(() => setMega(entry, false), OleaMenu.CLOSE_DELAY);
+    megas.push(entry);
+
+    button.addEventListener('click', () => {
+      entry.closer.cancel();
+      const next = OleaMenu.afterClick(entry.state);
+      if (next.open) openMega(entry, false); else setMega(entry, false);
+    });
+    item.addEventListener('mouseenter', () => {
+      entry.closer.cancel();
+      if (!hoverQuery.matches || entry.state.open) return;
+      openMega(entry, true);
+    });
+    item.addEventListener('mouseleave', () => {
+      if (hoverQuery.matches && OleaMenu.shouldAutoClose(entry.state)) entry.closer.schedule();
+    });
+    item.addEventListener('focusout', event => {
+      if (entry.state.open && OleaMenu.shouldCloseOnFocusout(event.relatedTarget, menu)) setMega(entry, false);
+    });
+    panel.addEventListener('click', event => { if (event.target.closest('a')) setMega(entry, false); });
+  }
   document.addEventListener('click', event => {
-    if (isMegaOpen() && OleaMenu.isOutside(event.target, mega)) setMega(OleaMenu.nextState(true, 'outside'));
+    for (const entry of megas) if (entry.state.open && OleaMenu.isOutside(event.target, entry.item)) setMega(entry, false);
   });
-  megaPanel.addEventListener('click', event => { if (event.target.closest('a')) setMega(false); });
 }
 
 toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
 menu.addEventListener('click', event => { if (event.target.closest('a')) setMenu(false); });
 document.addEventListener('keydown', event => {
   if (event.key !== 'Escape') return;
-  if (megaButton && megaButton.getAttribute('aria-expanded') === 'true') { setMega(false); megaButton.focus(); return; }
+  const opened = megas.find(entry => entry.state.open);
+  if (opened) { setMega(opened, false); opened.button.focus(); return; }
   if (toggle.getAttribute('aria-expanded') === 'true') { setMenu(false); toggle.focus(); }
 });
 const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
@@ -72,6 +101,7 @@ if ('IntersectionObserver' in window && !reduceMotion) {
 
 /* Ondes spectrales animées (héro et appel à l'action) */
 function startWaves(canvas, { lines = 16, amplitude = 0.08, speed = 0.0006, center = 0.55 } = {}) {
+  if (!canvas) return () => {};
   const ctx = canvas.getContext('2d');
   let width = 0;
   let height = 0;

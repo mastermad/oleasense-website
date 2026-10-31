@@ -94,7 +94,10 @@ test('CA2 : chargé dans un navigateur, expose OleaConversion et s’initialise 
 
 test('CA3 : confirmation.html affiche l’engagement sous 24 h et charge conversion.js', () => {
   assert.match(html, /sous 24 h/);
-  assert.doesNotMatch(html, /aria-hidden/);
+  const main = html.match(/<main[\s\S]*?<\/main>/);
+  assert.ok(main, 'le contenu principal <main> est présent');
+  assert.doesNotMatch(main[0], /aria-hidden/);
+  assert.match(html.slice(0, html.indexOf('<main')), /<svg class="icon" aria-hidden="true">/);
   assert.equal((html.match(/<h1[ >]/g) || []).length, 1);
   assert.match(html, /<html lang="fr">/);
   assert.match(html, /<script src="conversion\.js" defer><\/script>/);

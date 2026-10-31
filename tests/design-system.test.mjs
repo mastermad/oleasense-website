@@ -8,7 +8,7 @@ import { contrastRatio, luminance, parseHex } from './contrast.mjs';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..', 'docs');
 const read = name => readFileSync(join(root, name), 'utf8');
 const css = read('styles.css');
-const pageNames = ['index.html', 'a-propos.html', 'mentions-legales.html', 'politique-confidentialite.html', 'confirmation.html', '404.html'];
+const pageNames = ['index.html', 'simulations.html', 'a-propos.html', 'mentions-legales.html', 'politique-confidentialite.html', 'confirmation.html', '404.html'];
 
 const rootBlock = /:root\s*\{([^}]*)\}/.exec(css)?.[1] ?? '';
 const variables = Object.fromEntries([...rootBlock.matchAll(/--([a-z0-9-]+):\s*([^;]+);/gi)].map(m => [m[1], m[2].trim()]));

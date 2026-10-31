@@ -40,7 +40,11 @@ test('CA3 : formulaire de contact mailto avec champs étiquetés et requis', () 
   }
   assert.match(form, /type="submit"/);
   assert.doesNotMatch(form, /https?:\/\//);
-  assert.doesNotMatch(html, /fetch\(|<script/);
+  assert.doesNotMatch(html, /fetch\(/);
+  const scripts = [...html.matchAll(/<script\b[^>]*>/g)].map(match => match[0]);
+  assert.equal(scripts.length, 2);
+  for (const tag of scripts) assert.match(tag, /^<script src="(menu|script)\.js\?v=\d+" defer>$/);
+  assert.doesNotMatch(html, /<script\b[^>]*>[^<]+<\/script>/);
 });
 
 test('CA4 : équipe issue des mentions légales, sans image', () => {
@@ -56,6 +60,6 @@ test('CA5 : navigation, sitemap, aucun stockage ni traceur', () => {
   assert.equal((index.match(/href="a-propos\.html"/g) ?? []).length, 2);
   assert.match(read('sitemap.xml'), /<loc>https:\/\/oleasense\.com\/a-propos\.html<\/loc>/);
   assert.doesNotMatch(html, /cookie|localStorage|sessionStorage/i);
-  assert.match(html, /styles\.css\?v=11/);
-  assert.match(index, /styles\.css\?v=11/);
+  assert.match(html, /styles\.css\?v=12/);
+  assert.match(index, /styles\.css\?v=12/);
 });

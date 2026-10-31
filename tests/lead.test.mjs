@@ -31,7 +31,7 @@ test('CA1 : le formulaire expose les champs, le consentement et le champ piège'
 test('CA8 : scripts locaux, config relative, aucune ressource externe', () => {
   assert.match(html, /<script src="config\.js" defer>/);
   assert.match(html, /<script src="lead\.js" defer>/);
-  assert.match(html, /script\.js\?v=10/);
+  assert.match(html, /script\.js\?v=11/);
   assert.match(read('config.js'), /apiBaseUrl: ''/);
   for (const f of ['lead.js', 'config.js', 'confirmation.html']) {
     assert.doesNotMatch(read(f), /https?:\/\/(?!oleasense\.com)/);

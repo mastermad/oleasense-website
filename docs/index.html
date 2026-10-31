@@ -15,7 +15,7 @@
   <meta property="og:description" content="Imagerie hyperspectrale, satellite, drone et intelligence artificielle pour décider plus tôt, du verger à l'huile.">
   <meta property="og:url" content="https://oleasense.com/">
   <link rel="preload" href="assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=11">
+  <link rel="stylesheet" href="styles.css?v=12">
   <link rel="stylesheet" href="consent.css">
 </head>
 <body>
@@ -51,45 +51,64 @@
       </button>
       <nav id="menu-principal" class="main-nav" aria-label="Navigation principale">
         <ul>
-          <li><a href="#lumiere">La lumière</a></li>
-          <li><a href="#recolte">Timing de récolte</a></li>
           <li class="has-mega">
-            <a id="solutions-lien" href="#solutions">Solutions</a>
+            <a id="solutions-lien" href="index.html#lumiere">Solutions</a>
             <button id="solutions-bouton" class="mega-toggle" type="button" aria-expanded="false" aria-controls="mega-solutions">
               <span class="visually-hidden">Afficher le sous-menu Solutions</span>
               <span class="mega-chevron" aria-hidden="true"></span>
             </button>
             <div id="mega-solutions" class="mega-panel" hidden>
-              <div class="mega-col" role="group" aria-labelledby="mega-titre-domaines">
-                <p class="mega-titre" id="mega-titre-domaines">Domaines</p>
+              <div class="mega-col" role="group" aria-label="Solutions">
                 <ul>
-                  <li><a href="#solution-field">OleaSense Field</a></li>
-                  <li><a href="#lumiere">La lumière</a></li>
-                  <li><a href="#titre-recolte">Timing de récolte</a></li>
-                </ul>
-              </div>
-              <div class="mega-col" role="group" aria-labelledby="mega-titre-huileries">
-                <p class="mega-titre" id="mega-titre-huileries">Huileries</p>
-                <ul>
-                  <li><a href="#solution-mill">OleaSense Mill</a></li>
-                  <li><a href="#parcours">Du verger à l'huile</a></li>
-                  <li><a href="#application">Application</a></li>
-                </ul>
-              </div>
-              <div class="mega-col" role="group" aria-labelledby="mega-titre-cooperatives">
-                <p class="mega-titre" id="mega-titre-cooperatives">Coopératives</p>
-                <ul>
-                  <li><a href="#solution-pont">Le pont agro-huilerie</a></li>
-                  <li><a href="#utilisateurs">Pour qui</a></li>
-                  <li><a href="#offres">Offres</a></li>
+                  <li><a class="mega-link" href="index.html#lumiere"><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg><span class="mega-text"><strong>Ce que la lumière révèle</strong><span>Le stress de l'olivier lu dans le spectre des feuilles, avant qu'il ne se voie.</span></span></a></li>
+                  <li><a class="mega-link" href="index.html#parcours"><svg class="icon" aria-hidden="true"><use href="#i-drop"/></svg><span class="mega-text"><strong>Du verger à l'huile</strong><span>Un fil continu, de la parcelle à la bouteille.</span></span></a></li>
+                  <li><a class="mega-link" href="index.html#recolte"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg><span class="mega-text"><strong>Timing de récolte</strong><span>Récolter au bon moment, pas à date fixe.</span></span></a></li>
+                  <li><a class="mega-link" href="index.html#tracabilite"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg><span class="mega-text"><strong>Traçabilité</strong><span>Chaque lot d'huile retracé jusqu'à sa parcelle.</span></span></a></li>
                 </ul>
               </div>
             </div>
           </li>
-          <li><a href="#parcours">Du verger à l'huile</a></li>
-          <li><a href="#application">Application</a></li>
-          <li><a href="#utilisateurs">Pour qui</a></li>
-          <li><a href="#offres">Offres</a></li>
+          <li class="has-mega">
+            <a id="produits-lien" href="index.html#solution-field">Produits</a>
+            <button id="produits-bouton" class="mega-toggle" type="button" aria-expanded="false" aria-controls="mega-produits">
+              <span class="visually-hidden">Afficher le sous-menu Produits</span>
+              <span class="mega-chevron" aria-hidden="true"></span>
+            </button>
+            <div id="mega-produits" class="mega-panel" hidden>
+              <div class="mega-col" role="group" aria-labelledby="mega-titre-produits">
+                <p class="mega-titre" id="mega-titre-produits">Nos produits</p>
+                <ul>
+                  <li><a class="mega-link" href="index.html#solution-field"><svg class="icon" aria-hidden="true"><use href="#i-sprout"/></svg><span class="mega-text"><strong>OleaSense Field</strong><span>Pour le verger : diagnostic, suivi satellite et irrigation.</span></span></a></li>
+                  <li><a class="mega-link" href="index.html#solution-mill"><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg><span class="mega-text"><strong>OleaSense Mill</strong><span>Pour l'huilerie : réception, qualité et conformité export.</span></span></a></li>
+                  <li><a class="mega-link" href="index.html#solution-bridge"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg><span class="mega-text"><strong>OleaSense Bridge</strong><span>Pour toute la filière : le lien entre le verger et l'huilerie.</span></span></a></li>
+                </ul>
+              </div>
+              <div class="mega-col" role="group" aria-labelledby="mega-titre-decouvrir">
+                <p class="mega-titre" id="mega-titre-decouvrir">Découvrir</p>
+                <ul>
+                  <li><a class="mega-link" href="index.html#application"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg><span class="mega-text"><strong>Application</strong><span>Tout l'essentiel, d'un coup d'œil.</span></span></a></li>
+                  <li><a class="mega-link" href="index.html#utilisateurs"><svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg><span class="mega-text"><strong>Pour qui</strong><span>Un outil pour chaque métier.</span></span></a></li>
+                  <li><a class="mega-link" href="index.html#offres"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg><span class="mega-text"><strong>Offres</strong><span>Choisir la formule adaptée à votre domaine.</span></span></a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="has-mega">
+            <a id="simulations-lien" href="simulations.html#comparaison">Simulations</a>
+            <button id="simulations-bouton" class="mega-toggle" type="button" aria-expanded="false" aria-controls="mega-simulations">
+              <span class="visually-hidden">Afficher le sous-menu Simulations</span>
+              <span class="mega-chevron" aria-hidden="true"></span>
+            </button>
+            <div id="mega-simulations" class="mega-panel" hidden>
+              <div class="mega-col" role="group" aria-label="Simulations">
+                <ul>
+                  <li><a class="mega-link" href="simulations.html#comparaison"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg><span class="mega-text"><strong>Comparaison de trois stratégies de récolte</strong><span>Comparer trois dates de récolte côte à côte.</span></span></a></li>
+                  <li><a class="mega-link" href="simulations.html#gain"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg><span class="mega-text"><strong>Estimer votre gain</strong><span>Une estimation selon votre surface et votre formule.</span></span></a></li>
+                  <li><a class="mega-link" href="simulations.html#faq"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg><span class="mega-text"><strong>Questions fréquentes</strong><span>Les réponses aux questions les plus posées.</span></span></a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
           <li><a href="a-propos.html">À propos</a></li>
         </ul>
       </nav>
@@ -203,66 +222,15 @@
           <p class="prose">Un calendrier de récolte fixe ignore l'avance ou le retard de la saison : chaque parcelle mûrit à son rythme. OleaSense vise un pilotage par la donnée : suivi continu de la synthèse lipidique (lipogenèse) et de l'humidité du fruit par imagerie hyperspectrale (PRISMA, EnMAP) et multispectrale (Sentinel-2), pour repérer la fenêtre où le rendement en huile et le profil Vierge Extra se rejoignent.</p>
         </div>
 
-        <div class="recolte-grid">
-          <div class="spectrum reveal" id="maturite">
-            <div class="spectrum-head">
-              <p class="badge" id="maturite-badge">Récolte précoce</p>
-              <p class="spectrum-legend"><span class="dot dot-live"></span> Accumulation d'huile <span class="dot dot-ref"></span> Polyphénols / acidité</p>
-            </div>
-            <svg id="maturite-svg" viewBox="0 0 640 320" role="img" aria-labelledby="maturite-titre maturite-desc">
-              <title id="maturite-titre">Maturité du fruit : huile, polyphénols et fenêtre optimale</title>
-              <desc id="maturite-desc">La courbe d'accumulation d'huile monte, celle des polyphénols descend. Elles se croisent au milieu d'une fenêtre optimale de 7 jours.</desc>
-            </svg>
-            <div class="spectrum-control">
-              <label for="maturite-curseur">Jour de récolte dans la saison</label>
-              <input id="maturite-curseur" type="range" min="0" max="60" step="1" value="10" aria-describedby="maturite-message">
-            </div>
-            <p id="maturite-message" class="spectrum-message" aria-live="polite">Déplacez le curseur pour voir l'état de maturité.</p>
-          </div>
-          <p class="note">Illustration pédagogique, non issue de mesures réelles.</p>
-        </div>
-
-        <div class="table-wrap reveal">
-          <table id="matrice-recolte" class="matrice">
-            <caption>Comparaison de trois stratégies de récolte</caption>
-            <thead>
-              <tr>
-                <th scope="col">Stratégie</th>
-                <th scope="col">Volume d'huile</th>
-                <th scope="col">Qualité et acidité</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Récolte précoce</th>
-                <td>Perte de volume d'huile</td>
-                <td>Qualité élevée, polyphénols abondants</td>
-              </tr>
-              <tr>
-                <th scope="row">Récolte tardive</th>
-                <td>Volume élevé</td>
-                <td>Acidité au-delà de 0,8 % et chute des polyphénols</td>
-              </tr>
-              <tr>
-                <th scope="row">Récolte ciblée OleaSense</th>
-                <td>Rendement en huile maximal visé</td>
-                <td>Dans les critères Vierge Extra</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="hero-actions">
-          <a class="button button-gold" id="recolte-cta" href="#contact">Tester l'estimation de récolte sur mon domaine</a>
-        </div>
+        <p class="renvoi reveal"><a class="button button-gold" id="recolte-renvoi" href="simulations.html#comparaison">Comparer les trois stratégies</a></p>
       </div>
     </section>
 
-    <!-- Solutions -->
+    <!-- Produits -->
     <section id="solutions" class="section section-tint" aria-labelledby="titre-solutions">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow eyebrow-dark">Solutions</p>
+          <p class="eyebrow eyebrow-dark">Produits</p>
           <h2 id="titre-solutions">Une plateforme pour toute la filière</h2>
         </div>
         <div class="cards">
@@ -288,9 +256,10 @@
               <li>Traçabilité d'un lot jusqu'à sa parcelle d'origine</li>
             </ul>
           </article>
-          <article id="solution-pont" class="card reveal">
+          <article id="solution-bridge" class="card reveal">
+            <span id="solution-pont" aria-hidden="true"></span>
             <span class="card-icon card-icon-gold"><svg class="icon icon-lg" aria-hidden="true"><use href="#i-layers"/></svg></span>
-            <h3>Le pont agro-huilerie</h3>
+            <h3>OleaSense Bridge</h3>
             <p class="card-tag">Pour toute la filière</p>
             <ul>
               <li>Lien entre l'état du verger à la récolte et la qualité de l'huile obtenue</li>
@@ -332,6 +301,39 @@
             <p>Qualité à la réception, conformité et traçabilité jusqu'à la parcelle d'origine.</p>
           </li>
         </ol>
+      </div>
+    </section>
+
+    <!-- Traçabilité -->
+    <section id="tracabilite" class="section section-tint" aria-labelledby="titre-tracabilite">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow eyebrow-dark">Traçabilité</p>
+          <h2 id="titre-tracabilite">Chaque lot d'huile, retracé jusqu'à sa parcelle.</h2>
+          <p class="lead">À la réception, chaque remorque reçoit un numéro de lot. OleaSense relie ce lot à sa parcelle d'origine, à sa cuve et aux mesures de qualité, pour répondre en quelques clics à une question d'acheteur ou de contrôle.</p>
+        </div>
+        <ol class="trace-flow reveal" aria-label="Parcours d'un lot">
+          <li>Parcelle</li>
+          <li>Remorque</li>
+          <li>Cuve</li>
+          <li>Certificat</li>
+        </ol>
+        <div class="trace-steps">
+          <article class="card reveal">
+            <h3>Parcelle</h3>
+            <p>Chaque lot garde la mémoire de son origine : parcelle, variété et date de récolte, avec l'état de stress mesuré avant la cueillette.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Réception et cuve</h3>
+            <p>Pesée de la remorque, diagnostic optique du lot, puis affectation à une cuve du parc. Le trajet parcelle, remorque, cuve est enregistré.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Qualité et certificat</h3>
+            <p>Acidité, classe de qualité (Extra Vierge, Vierge) et certificat PDF du lot, que vous pouvez envoyer par e-mail.</p>
+          </article>
+        </div>
+        <p class="trace-find"><strong>Pour retrouver un lot</strong> : recherche par numéro de lot, domaine ou date de récolte.</p>
+        <p class="renvoi"><a class="button button-gold" id="tracabilite-cta" href="#contact">Voir la traçabilité en démonstration</a></p>
       </div>
     </section>
 
@@ -453,22 +455,10 @@
           <h2 id="titre-offres">Choisir la formule adaptée à votre domaine</h2>
           <p class="lead">Tarifs et gains présentés à titre d'illustration : estimation indicative, non contractuelle.</p>
         </div>
-        <p id="offres-erreur" class="offres-erreur" role="alert" hidden></p>
-        <noscript><p>Le détail des offres (Solo, Premium, Moulinier / Coop) nécessite JavaScript. Contactez-nous pour une estimation indicative.</p></noscript>
-        <div id="offres-grille" class="offres-grid"></div>
-
-        <h3>Estimer votre gain</h3>
-        <form id="roi-form" class="roi-form">
-          <label for="roi-surface">Surface du domaine (ha)</label>
-          <input id="roi-surface" name="surface" type="text" inputmode="decimal" disabled>
-          <label for="roi-offre">Offre</label>
-          <select id="roi-offre" name="offre" disabled></select>
-          <button class="button" type="submit">Calculer</button>
-        </form>
-        <p id="roi-resultat" class="roi-result" aria-live="polite"></p>
-
-        <h3 id="faq">Questions fréquentes</h3>
-        <div id="faq-liste" class="faq"></div>
+        <p class="renvoi">
+          <a class="button" id="offres-renvoi-gain" href="simulations.html#gain">Estimer votre gain</a>
+          <a class="button button-ghost" id="offres-renvoi-faq" href="simulations.html#faq">Questions fréquentes</a>
+        </p>
       </div>
     </section>
 
@@ -530,10 +520,12 @@
       <p>Plateforme de diagnostic hyperspectral et d'intelligence artificielle pour l'oléiculture.</p>
       <nav aria-label="Pied de page">
         <ul>
-          <li><a href="#lumiere">La lumière</a></li>
+          <li><a href="#lumiere">Ce que la lumière révèle</a></li>
           <li><a href="#recolte">Timing de récolte</a></li>
-          <li><a href="#solutions">Solutions</a></li>
+          <li><a href="#tracabilite">Traçabilité</a></li>
+          <li><a href="#solutions">Produits</a></li>
           <li><a href="#application">Application</a></li>
+          <li><a href="simulations.html">Simulations</a></li>
           <li><a href="a-propos.html">À propos</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -545,10 +537,7 @@
         <script src="consent.js" defer></script>
   <script src="config.js" defer></script>
   <script src="lead.js" defer></script>
-  <script src="menu.js?v=1" defer></script>
-  <script src="script.js?v=10" defer></script>
-  <script src="maturite.js" defer></script>
-  <script src="roi.js" defer></script>
-  <script src="offres.js" defer></script>
+  <script src="menu.js?v=2" defer></script>
+  <script src="script.js?v=11" defer></script>
 </body>
 </html>

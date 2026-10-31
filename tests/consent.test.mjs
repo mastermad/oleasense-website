@@ -202,14 +202,14 @@ test('CA1 : initConsent tolère l’absence du bouton et du stockage', () => {
   assert.deepEqual(win.OLEASENSE_CONSENT, { analytics: false });
 });
 
-const pages = ['index.html', 'a-propos.html', 'mentions-legales.html', 'confirmation.html', 'politique-confidentialite.html'];
+const pages = ['index.html', 'simulations.html', 'a-propos.html', 'mentions-legales.html', 'confirmation.html', 'politique-confidentialite.html'];
 
 test('CA1/CA2 : chaque page a le bouton de préférences, consent.js et le lien vers la politique', () => {
   for (const p of pages) {
     const html = read(p);
     assert.match(html, /<button type="button" id="consent-manage"[^>]*\shidden>/, p);
     if (p !== 'a-propos.html') assert.match(html, /<script src="consent\.js" defer>/, p);
-    else assert.doesNotMatch(html, /<script/, p);
+    else assert.doesNotMatch(html, /consent\.js/, p);
     assert.match(html, /<link rel="stylesheet" href="consent\.css">/, p);
     assert.match(html, /href="politique-confidentialite\.html"/, p);
   }

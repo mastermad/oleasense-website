@@ -1,5 +1,5 @@
 /*
- * Logique pure du méga-menu « Solutions » (testée par node:test).
+ * Logique pure des sous-menus Solutions, Produits et Simulations (testée par node:test).
  * Exposé sous `window.OleaMenu` dans le navigateur, et via `module.exports`
  * sous Node.
  */
@@ -61,5 +61,81 @@
     }
   }
 
-  return { nextState, isOutside, nextIndex };
+  /** Délai (ms) avant la fermeture d'un sous-menu ouvert au survol. */
+  const CLOSE_DELAY = 250;
+
+  /**
+   * Indique si la perte de focus doit fermer le sous-menu : jamais quand le
+   * nouveau focus est inconnu (relatedTarget nul, clic sur une zone non focusable)
+   * ou reste dans le menu.
+   *
+   * @param {Node|null} related nœud qui reçoit le focus (relatedTarget)
+   * @param {Node|null} container zone du menu principal (passage entre sous-menus permis)
+   * @returns {boolean} vrai seulement si le focus part vers un nœud extérieur
+   */
+  function shouldCloseOnFocusout(related, container) {
+    return Boolean(related) && isOutside(related, container);
+  }
+
+  /**
+   * Nouvel état d'un sous-menu après un clic sur son déclencheur : un menu
+   * ouvert au survol devient persistant, sinon le clic bascule l'ouverture.
+   *
+   * @param {{open: boolean, byHover: boolean}} state état courant
+   * @returns {{open: boolean, byHover: boolean}} nouvel état (jamais ouvert « au survol » après un clic)
+   */
+  function afterClick(state) {
+    const current = state || {};
+    if (current.open && current.byHover) return { open: true, byHover: false };
+    return { open: !current.open, byHover: false };
+  }
+
+  /**
+   * Indique si la sortie du pointeur doit programmer une fermeture : seulement
+   * pour un menu ouvert au survol, jamais pour un menu ouvert au clic.
+   *
+   * @param {{open: boolean, byHover: boolean}} state état courant
+   * @returns {boolean} vrai si une fermeture temporisée est attendue
+   */
+  function shouldAutoClose(state) {
+    return Boolean(state && state.open && state.byHover);
+  }
+
+  /**
+   * États d'ouverture d'un ensemble de sous-menus dont un seul est ouvert.
+   *
+   * @param {number} count nombre de sous-menus
+   * @param {number} openIndex index du sous-menu à ouvrir (hors bornes : tous fermés)
+   * @returns {boolean[]} un booléen par sous-menu
+   */
+  function openOnly(count, openIndex) {
+    return Array.from({ length: Math.max(0, count || 0) }, (_, index) => index === openIndex);
+  }
+
+  /**
+   * Fermeture temporisée annulable.
+   *
+   * @param {Function} close action de fermeture
+   * @param {number} [delay] délai en ms (250 par défaut)
+   * @param {{set?: Function, clear?: Function}} [timers] minuteries injectables (tests)
+   * @returns {{schedule: Function, cancel: Function, isPending: Function}} contrôle de la minuterie
+   */
+  function createCloser(close, delay, timers) {
+    const given = timers || {};
+    const set = given.set || ((callback, ms) => setTimeout(callback, ms));
+    const clear = given.clear || (id => clearTimeout(id));
+    let pending = null;
+    const cancel = () => {
+      if (pending === null) return;
+      clear(pending);
+      pending = null;
+    };
+    const schedule = () => {
+      cancel();
+      pending = set(() => { pending = null; close(); }, delay === undefined ? CLOSE_DELAY : delay);
+    };
+    return { schedule, cancel, isPending: () => pending !== null };
+  }
+
+  return { CLOSE_DELAY, nextState, isOutside, nextIndex, shouldCloseOnFocusout, afterClick, shouldAutoClose, openOnly, createCloser };
 }));

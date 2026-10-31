@@ -11,7 +11,8 @@ const require = createRequire(import.meta.url);
 const roi = require(join(docs, 'roi.js'));
 const read = name => readFileSync(join(docs, name), 'utf8');
 const data = JSON.parse(read('data/offres.json'));
-const html = read('index.html');
+const html = read('simulations.html');
+const index = read('index.html');
 const hyp = data.hypotheses;
 
 test('CA1 : trois offres valides et section #offres', () => {
@@ -21,7 +22,9 @@ test('CA1 : trois offres valides et section #offres', () => {
     assert.ok(typeof o.prixMensuelHT === 'number' && o.prixMensuelHT >= 0);
   }
   assert.match(html, /id="offres"/);
-  assert.match(html, /href="#offres"/);
+  assert.match(index, /id="offres"/);
+  assert.match(index, /href="simulations\.html#gain"/);
+  assert.match(index, /href="simulations\.html#faq"/);
   assert.deepEqual(roi.validerDonnees(data), { ok: true });
 });
 

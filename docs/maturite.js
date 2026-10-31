@@ -13,7 +13,8 @@
 
   const SVG_NS = 'http://www.w3.org/2000/svg';
   // Cible unique du bouton d'action : à remplacer par le formulaire d'étude parcellaire (US-926).
-  const CTA_TARGET = '#contact';
+  // Le widget vit sur simulations.html, alors que le bloc #contact est sur index.html : lien vers l'accueil.
+  const CTA_TARGET = 'index.html#contact';
   const MAX_DAY = 60;
   const WINDOW_DAYS = 7;
   const OIL_CENTER = 28;
