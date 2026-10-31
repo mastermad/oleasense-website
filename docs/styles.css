@@ -222,6 +222,17 @@ input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius
 .cta-inner { max-width: 780px; }
 .cta .lead { margin-inline: auto; }
 .cta .hero-actions { justify-content: center; }
+.lead-form { display: grid; gap: 1rem; text-align: left; margin: 2rem auto; }
+.lead-field { display: grid; gap: .35rem; }
+.lead-field label { font-weight: 600; }
+.lead-form input[type="text"], .lead-form input[type="email"], .lead-form input[type="tel"] { padding: .75rem 1rem; border-radius: 10px; border: 2px solid transparent; font: inherit; color: var(--ink); background: var(--cream); }
+.lead-form input[aria-invalid="true"] { border-color: var(--gold); }
+.lead-form input:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.lead-consent { display: flex; gap: .75rem; align-items: flex-start; }
+.lead-consent input { margin-top: .3rem; width: 1.2rem; height: 1.2rem; }
+.lead-erreur { background: var(--cream); color: var(--ink); border-left: 6px solid var(--gold); border-radius: 10px; padding: .75rem 1rem; }
+.lead-erreur p { margin: .25rem 0; }
+.lead-trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 
 /* Pied de page */
 .site-footer { background: var(--deeper); color: rgba(255, 255, 255, .85); padding: 3rem 0 2rem; }

@@ -446,8 +446,46 @@
         <p class="eyebrow">Contact</p>
         <h2 id="titre-contact">Parlons de vos parcelles et de votre huilerie</h2>
         <p class="lead">Nous organisons des démonstrations avec vos propres données. Écrivez-nous en quelques lignes : votre région, la taille de vos vergers et ce que vous souhaitez mieux piloter.</p>
+        <form id="lead-form" class="lead-form" novalidate aria-labelledby="titre-contact">
+          <div id="lead-erreur" class="lead-erreur" role="alert" tabindex="-1" hidden></div>
+          <div class="lead-field">
+            <label for="lead-name">Nom</label>
+            <input id="lead-name" name="name" type="text" required maxlength="150" autocomplete="name">
+          </div>
+          <div class="lead-field">
+            <label for="lead-email">Adresse e-mail</label>
+            <input id="lead-email" name="email" type="email" required maxlength="254" autocomplete="email">
+          </div>
+          <div class="lead-field">
+            <label for="lead-phone">Téléphone</label>
+            <input id="lead-phone" name="phone" type="tel" required maxlength="20" autocomplete="tel">
+          </div>
+          <div class="lead-field">
+            <label for="lead-domain">Domaine</label>
+            <input id="lead-domain" name="domainName" type="text" required maxlength="150" autocomplete="organization">
+          </div>
+          <div class="lead-field">
+            <label for="lead-surface">Surface (hectares)</label>
+            <input id="lead-surface" name="surfaceHa" type="text" inputmode="decimal" required autocomplete="off">
+          </div>
+          <div class="lead-field">
+            <label for="lead-location">Localisation</label>
+            <input id="lead-location" name="location" type="text" required maxlength="150" autocomplete="address-level2">
+          </div>
+          <div class="lead-trap" aria-hidden="true">
+            <label for="lead-website">Ne pas remplir ce champ</label>
+            <input id="lead-website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="lead-consent">
+            <input id="lead-consent" name="consent" type="checkbox" required>
+            <label for="lead-consent">J'accepte que mes données soient utilisées par OleaSense pour répondre à ma demande de démonstration. Elles ne sont pas utilisées à d'autres fins.</label>
+          </div>
+          <div class="hero-actions">
+            <button class="button button-gold" type="submit">Envoyer ma demande</button>
+          </div>
+        </form>
         <div class="hero-actions">
-          <a class="button button-gold" href="mailto:contact@oleasense.com?subject=Demande%20de%20d%C3%A9monstration%20OleaSense">Écrire à l'équipe OleaSense</a>
+          <a class="button button-ghost" href="mailto:contact@oleasense.com?subject=Demande%20de%20d%C3%A9monstration%20OleaSense">Écrire à l'équipe OleaSense</a>
         </div>
       </div>
     </section>
@@ -471,7 +509,9 @@
     </div>
   </footer>
 
-  <script src="script.js?v=8" defer></script>
+  <script src="config.js" defer></script>
+  <script src="lead.js" defer></script>
+  <script src="script.js?v=9" defer></script>
   <script src="maturite.js" defer></script>
   <script src="roi.js" defer></script>
   <script src="offres.js" defer></script>
