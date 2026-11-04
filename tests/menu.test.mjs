@@ -135,7 +135,7 @@ test('CA1 : trois sous-menus Solutions, Produits et Simulations, plus À propos'
   assert.match(nav, /<li><a href="a-propos\.html">À propos<\/a><\/li>/);
   assert.deepEqual(linksOf(panels.solutions).map(link => link.label), ['Ce que la lumière révèle', "Du verger à l'huile", 'Timing de récolte', 'Traçabilité']);
   assert.deepEqual(linksOf(panels.produits).map(link => link.label), ['OleaSense Field', 'OleaSense Mill', 'OleaSense Bridge', 'Application', 'Pour qui', 'Offres']);
-  assert.deepEqual(linksOf(panels.simulations).map(link => link.label), ['Comparaison de trois stratégies de récolte', 'Estimer votre gain', 'Questions fréquentes']);
+  assert.deepEqual(linksOf(panels.simulations).map(link => link.label), ['Comparaison de trois stratégies de récolte', 'Questions fréquentes']);
   assert.doesNotMatch(html, /pont agro-huilerie/i);
 });
 
@@ -206,7 +206,7 @@ test('CA6 : scripts menu avant script.js, versions de cache à jour, aucune ress
 test('CA3 à CA5 : destinations exactes de chaque sous-menu', () => {
   assert.deepEqual(linksOf(panels.solutions).map(link => link.href), ['index.html#lumiere', 'index.html#parcours', 'index.html#recolte', 'index.html#tracabilite']);
   assert.deepEqual(linksOf(panels.produits).map(link => link.href), ['index.html#solution-field', 'index.html#solution-mill', 'index.html#solution-bridge', 'index.html#application', 'index.html#utilisateurs', 'index.html#offres']);
-  assert.deepEqual(linksOf(panels.simulations).map(link => link.href), ['simulations.html#comparaison', 'simulations.html#gain', 'simulations.html#faq']);
+  assert.deepEqual(linksOf(panels.simulations).map(link => link.href), ['simulations.html#comparaison', 'simulations.html#faq']);
 });
 
 test('CA6 : chaque option du menu a une icône, un titre et une description', () => {

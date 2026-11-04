@@ -23,7 +23,7 @@ test('CA1 : trois offres valides et section #offres', () => {
   }
   assert.match(html, /id="offres"/);
   assert.match(index, /id="offres"/);
-  assert.match(index, /href="simulations\.html#gain"/);
+  assert.doesNotMatch(index, /simulations\.html#gain/);
   assert.match(index, /href="simulations\.html#faq"/);
   assert.deepEqual(roi.validerDonnees(data), { ok: true });
 });
@@ -120,6 +120,15 @@ test('offres.js : rendu, calcul et validation', async () => {
   ids['roi-offre'].value = 'zzz';
   ids['roi-form'].listeners.submit();
   assert.equal(ids['offres-erreur'].textContent, 'Offre inconnue.');
+});
+
+test('offres.js : sans formulaire de calcul, affiche les offres et la FAQ', async () => {
+  const dom = fakeDom();
+  for (const id of ['roi-form', 'roi-surface', 'roi-offre', 'roi-resultat']) delete dom.ids[id];
+  const ids = await lancer({ ok: true, json: async () => data }, dom);
+  assert.equal(ids['offres-grille'].children.length, 3);
+  assert.equal(ids['faq-liste'].children.length, data.faq.length);
+  assert.equal(ids['offres-erreur'].hidden, false);
 });
 
 test('offres.js : repli accessible en cas d\'échec', async () => {

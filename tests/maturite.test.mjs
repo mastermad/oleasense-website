@@ -104,7 +104,7 @@ test('CA4 : cible du bouton définie une seule fois (page Simulations : contact 
 });
 
 test('CA1/CA3/CA5 : contenu HTML de la comparaison (page Simulations)', () => {
-  const section = html.slice(html.indexOf('id="comparaison"'), html.indexOf('id="gain"'));
+  const section = html.slice(html.indexOf('id="comparaison"'), html.indexOf('id="formules"'));
   for (const mot of ['0,8 %', 'Illustration pédagogique', 'matrice-recolte', 'maturite-svg', 'maturite-curseur']) {
     assert.ok(section.includes(mot), mot);
   }

@@ -35,7 +35,7 @@
       offre.inclus.forEach(function (i) { liste.appendChild(el('li', i)); });
       carte.appendChild(liste);
       grille.appendChild(carte);
-      champOffre.appendChild(Object.assign(el('option', offre.nom), { value: offre.id }));
+      if (champOffre) champOffre.appendChild(Object.assign(el('option', offre.nom), { value: offre.id }));
     });
   }
 
@@ -79,12 +79,14 @@
       donnees = data;
       rendreOffres(data);
       rendreFaq(data);
-      champSurface.value = data.hypotheses.surfaceDefaut;
-      champSurface.disabled = false;
-      champOffre.disabled = false;
-      form.addEventListener('submit', calculer);
+      if (form && champSurface && champOffre) {
+        champSurface.value = data.hypotheses.surfaceDefaut;
+        champSurface.disabled = false;
+        champOffre.disabled = false;
+        form.addEventListener('submit', calculer);
+      }
     })
     .catch(function () {
-      afficherErreur('Les offres et le calculateur sont momentanément indisponibles. Contactez-nous pour obtenir une estimation indicative.');
+      afficherErreur('Les offres sont momentanément indisponibles. Contactez-nous pour en savoir plus.');
     });
 }());
