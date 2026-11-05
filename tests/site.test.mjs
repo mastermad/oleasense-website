@@ -50,9 +50,9 @@ test('chaque page avec en-tête charge menu.js avant script.js et déclare les i
   }
 });
 
-test('simulations.html : comparaison, formules et FAQ avec leurs scripts', () => {
+test('simulations.html : comparaison et FAQ avec leurs scripts', () => {
   const html = readDoc('simulations.html');
-  for (const id of ['comparaison', 'formules', 'faq', 'matrice-recolte', 'recolte-cta', 'faq-liste', 'offres']) assert.match(html, new RegExp(`id="${id}"`), id);
+  for (const id of ['comparaison', 'faq', 'matrice-recolte', 'recolte-cta', 'faq-liste']) assert.match(html, new RegExp(`id="${id}"`), id);
   for (const id of ['gain', 'roi-form', 'roi-surface', 'roi-offre', 'roi-resultat']) assert.doesNotMatch(html, new RegExp(`id="${id}"`), id);
   for (const script of ['maturite.js', 'roi.js', 'offres.js']) assert.match(html, new RegExp(`<script src="${script}" defer>`));
   assert.match(html, /id="recolte-cta"[^>]*href="index\.html#contact"|href="index\.html#contact"[^>]*id="recolte-cta"/);

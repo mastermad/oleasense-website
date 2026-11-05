@@ -21,7 +21,6 @@ test('CA1 : trois offres valides et section #offres', () => {
     assert.ok(o.nom && o.description && o.inclus.length > 0);
     assert.ok(typeof o.prixMensuelHT === 'number' && o.prixMensuelHT >= 0);
   }
-  assert.match(html, /id="offres"/);
   assert.match(index, /id="offres"/);
   assert.doesNotMatch(index, /simulations\.html#gain/);
   assert.match(index, /href="simulations\.html#faq"/);
@@ -59,7 +58,7 @@ test('CA3 : FAQ', () => {
 
 test('CA4 : mention indicative et validation des données', () => {
   assert.match(data.mention, /estimation indicative/i);
-  assert.match(html, /estimation indicative/i);
+  assert.match(index, /estimation indicative/i);
   assert.doesNotMatch(JSON.stringify(data), /garanti/i);
   assert.equal(roi.validerDonnees(null).ok, false);
   assert.equal(roi.validerDonnees({}).ok, false);
