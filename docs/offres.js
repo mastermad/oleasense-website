@@ -1,11 +1,11 @@
 (function () {
   'use strict';
   var section = document.getElementById('offres');
-  if (!section || !window.OleaRoi) return;
+  var faq = document.getElementById('faq-liste');
+  if ((!section && !faq) || !window.OleaRoi) return;
   var roi = window.OleaRoi;
   var erreur = document.getElementById('offres-erreur');
   var grille = document.getElementById('offres-grille');
-  var faq = document.getElementById('faq-liste');
   var form = document.getElementById('roi-form');
   var champSurface = document.getElementById('roi-surface');
   var champOffre = document.getElementById('roi-offre');
@@ -13,6 +13,10 @@
   var donnees = null;
 
   function afficherErreur(message) {
+    if (!erreur) {
+      if (faq) faq.textContent = message;
+      return;
+    }
     erreur.textContent = message;
     erreur.hidden = false;
   }
@@ -25,6 +29,7 @@
   }
 
   function rendreOffres(data) {
+    if (!grille) return;
     grille.textContent = '';
     data.offres.forEach(function (offre) {
       var carte = el('article', '', 'offre-card');

@@ -15,15 +15,13 @@ const html = read('simulations.html');
 const index = read('index.html');
 const hyp = data.hypotheses;
 
-test('CA1 : trois offres valides et section #offres', () => {
+test('CA1 : trois offres valides', () => {
   assert.deepEqual(data.offres.map(o => o.id), ['solo', 'premium', 'moulinier-coop']);
   for (const o of data.offres) {
     assert.ok(o.nom && o.description && o.inclus.length > 0);
     assert.ok(typeof o.prixMensuelHT === 'number' && o.prixMensuelHT >= 0);
   }
-  assert.match(index, /id="offres"/);
   assert.doesNotMatch(index, /simulations\.html#gain/);
-  assert.match(index, /href="simulations\.html#faq"/);
   assert.deepEqual(roi.validerDonnees(data), { ok: true });
 });
 
@@ -52,13 +50,10 @@ test('CA2 : formaterEuros', () => {
 test('CA3 : FAQ', () => {
   assert.ok(data.faq.length >= 3);
   for (const f of data.faq) assert.ok(f.question.trim() && f.reponse.trim());
-  assert.match(html, /id="faq"/);
-  assert.match(html, /id="faq-liste"/);
 });
 
 test('CA4 : mention indicative et validation des données', () => {
   assert.match(data.mention, /estimation indicative/i);
-  assert.match(index, /estimation indicative/i);
   assert.doesNotMatch(JSON.stringify(data), /garanti/i);
   assert.equal(roi.validerDonnees(null).ok, false);
   assert.equal(roi.validerDonnees({}).ok, false);
@@ -128,6 +123,13 @@ test('offres.js : sans formulaire de calcul, affiche les offres et la FAQ', asyn
   assert.equal(ids['offres-grille'].children.length, 3);
   assert.equal(ids['faq-liste'].children.length, data.faq.length);
   assert.equal(ids['offres-erreur'].hidden, false);
+});
+
+test('offres.js : la FAQ s\'affiche sans section d\'offres', async () => {
+  const dom = fakeDom();
+  for (const id of ['offres', 'offres-erreur', 'offres-grille', 'roi-form', 'roi-surface', 'roi-offre', 'roi-resultat']) delete dom.ids[id];
+  const ids = await lancer({ ok: true, json: async () => data }, dom);
+  assert.equal(ids['faq-liste'].children.length, data.faq.length);
 });
 
 test('offres.js : repli accessible en cas d\'échec', async () => {

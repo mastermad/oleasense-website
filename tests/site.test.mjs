@@ -35,10 +35,10 @@ test('en-tête identique sur toutes les pages, 404 comprise (chemins racine norm
   for (const page of pages) assert.equal(normalizeHeader(readFileSync(page, 'utf8')), reference, rel(page));
 });
 
-test('en-tête : trois sous-menus, À propos et bouton de démonstration', () => {
+test('en-tête : quatre sous-menus, À propos et bouton de démonstration', () => {
   const header = headerOf(readDoc('index.html'));
-  assert.equal((header.match(/class="has-mega"/g) ?? []).length, 3);
-  for (const label of ['Solutions', 'Produits', 'Simulations', 'À propos', 'Demander une démonstration']) assert.ok(header.includes(`>${label}<`), label);
+  assert.equal((header.match(/class="has-mega"/g) ?? []).length, 4);
+  for (const label of ['Solutions', 'Produits', 'Engagements', 'Simulations', 'À propos', 'Demander une démonstration']) assert.ok(header.includes(`>${label}<`), label);
 });
 
 test('chaque page avec en-tête charge menu.js avant script.js et déclare les icônes utilisées', () => {
@@ -50,9 +50,9 @@ test('chaque page avec en-tête charge menu.js avant script.js et déclare les i
   }
 });
 
-test('simulations.html : comparaison et FAQ avec leurs scripts', () => {
+test('simulations.html : comparaison avec ses scripts', () => {
   const html = readDoc('simulations.html');
-  for (const id of ['comparaison', 'faq', 'matrice-recolte', 'recolte-cta', 'faq-liste']) assert.match(html, new RegExp(`id="${id}"`), id);
+  for (const id of ['comparaison', 'matrice-recolte', 'recolte-cta']) assert.match(html, new RegExp(`id="${id}"`), id);
   for (const id of ['gain', 'roi-form', 'roi-surface', 'roi-offre', 'roi-resultat']) assert.doesNotMatch(html, new RegExp(`id="${id}"`), id);
   for (const script of ['maturite.js', 'roi.js', 'offres.js']) assert.match(html, new RegExp(`<script src="${script}" defer>`));
   assert.match(html, /id="recolte-cta"[^>]*href="index\.html#contact"|href="index\.html#contact"[^>]*id="recolte-cta"/);
@@ -80,12 +80,11 @@ test('simulations.html : config.js chargé avant les scripts de simulation', () 
   assert.ok(existsSync(join(root, 'config.js')));
 });
 
-test('index : ancre Bridge et renvois vers les simulations depuis les offres', () => {
+test('index : ancre Bridge, sans renvoi vers le calcul de gain', () => {
   const html = readDoc('index.html');
   assert.match(html, /<article id="solution-bridge"/);
   assert.match(html, /<span id="solution-pont"/);
   assert.doesNotMatch(html, /offres-renvoi-gain|simulations\.html#gain/);
-  assert.match(html, /id="offres-renvoi-faq"[^>]*href="simulations\.html#faq"/);
 });
 
 test('simulations.html : ids uniques', () => {

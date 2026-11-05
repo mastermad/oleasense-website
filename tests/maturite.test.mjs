@@ -104,7 +104,7 @@ test('CA4 : cible du bouton définie une seule fois (page Simulations : contact 
 });
 
 test('CA1/CA3/CA5 : contenu HTML de la comparaison (page Simulations)', () => {
-  const section = html.slice(html.indexOf('id="comparaison"'), html.indexOf('id="faq"'));
+  const section = html.slice(html.indexOf('id="comparaison"'), html.indexOf('</main>'));
   for (const mot of ['0,8 %', 'Illustration pédagogique', 'matrice-recolte', 'maturite-svg', 'maturite-curseur']) {
     assert.ok(section.includes(mot), mot);
   }
@@ -119,7 +119,7 @@ test('CA1/CA3/CA5 : contenu HTML de la comparaison (page Simulations)', () => {
 
 test('CA1 : la section récolte de l\'accueil garde le texte et renvoie vers la comparaison', () => {
   const index = readFileSync(join(docs, 'index.html'), 'utf8');
-  const section = index.slice(index.indexOf('id="recolte"'), index.indexOf('id="solutions"'));
+  const section = index.slice(index.indexOf('id="recolte"'), index.indexOf('id="tracabilite"'));
   for (const mot of ['PRISMA', 'EnMAP', 'Sentinel-2', 'Comparer les trois stratégies']) assert.ok(section.includes(mot), mot);
   assert.match(section, /<h2 id="titre-recolte"/);
   assert.match(section, /href="simulations\.html#comparaison"/);

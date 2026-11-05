@@ -88,7 +88,21 @@
                 <ul>
                   <li><a class="mega-link" href="index.html#application"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg><span class="mega-text"><strong>Application</strong><span>Tout l'essentiel, d'un coup d'œil.</span></span></a></li>
                   <li><a class="mega-link" href="index.html#utilisateurs"><svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg><span class="mega-text"><strong>Pour qui</strong><span>Un outil pour chaque métier.</span></span></a></li>
-                  <li><a class="mega-link" href="index.html#offres"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg><span class="mega-text"><strong>Offres</strong><span>Choisir la formule adaptée à votre domaine.</span></span></a></li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="has-mega">
+            <a id="engagements-lien" href="index.html#engagements">Engagements</a>
+            <button id="engagements-bouton" class="mega-toggle" type="button" aria-expanded="false" aria-controls="mega-engagements">
+              <span class="visually-hidden">Afficher le sous-menu Engagements</span>
+              <span class="mega-chevron" aria-hidden="true"></span>
+            </button>
+            <div id="mega-engagements" class="mega-panel" hidden>
+              <div class="mega-col" role="group" aria-label="Engagements">
+                <ul>
+                  <li><a class="mega-link" href="index.html#engagements"><svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg><span class="mega-text"><strong>Pourquoi OleaSense</strong><span>Une approche fiable, ouverte et utile.</span></span></a></li>
+                  <li><a class="mega-link" href="index.html#sous-le-capot"><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg><span class="mega-text"><strong>Sous le capot</strong><span>D'où viennent les chiffres que vous voyez.</span></span></a></li>
                 </ul>
               </div>
             </div>
@@ -103,7 +117,6 @@
               <div class="mega-col" role="group" aria-label="Simulations">
                 <ul>
                   <li><a class="mega-link" href="simulations.html#comparaison"><svg class="icon" aria-hidden="true"><use href="#i-layers"/></svg><span class="mega-text"><strong>Comparaison de trois stratégies de récolte</strong><span>Comparer trois dates de récolte côte à côte.</span></span></a></li>
-                  <li><a class="mega-link" href="simulations.html#faq"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg><span class="mega-text"><strong>Questions fréquentes</strong><span>Les réponses aux questions les plus posées.</span></span></a></li>
                 </ul>
               </div>
             </div>
@@ -212,6 +225,39 @@
       </div>
     </section>
 
+    <!-- Parcours -->
+    <section id="parcours" class="journey" aria-labelledby="titre-parcours">
+      <svg class="landscape" viewBox="0 0 1600 460" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false"></svg>
+      <div class="container journey-inner">
+        <div class="section-head section-head-light reveal">
+          <p class="eyebrow">Du verger à l'huile</p>
+          <h2 id="titre-parcours">Un fil continu, de la parcelle à la bouteille</h2>
+        </div>
+        <ol class="journey-steps">
+          <li class="reveal">
+            <span class="step-badge">1</span>
+            <h3>Mesurer</h3>
+            <p>Terrain, satellite et drone captent la lumière de chaque parcelle.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-badge">2</span>
+            <h3>Diagnostiquer</h3>
+            <p>L'intelligence artificielle traduit les mesures en niveau de stress et en priorités.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-badge">3</span>
+            <h3>Agir</h3>
+            <p>Alertes, doses d'irrigation et prescriptions pour intervenir au bon endroit.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-badge">4</span>
+            <h3>Garantir</h3>
+            <p>Qualité à la réception, conformité et traçabilité jusqu'à la parcelle d'origine.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
     <!-- Timing de récolte -->
     <section id="recolte" class="section section-tint" aria-labelledby="titre-recolte">
       <div class="container">
@@ -222,6 +268,39 @@
         </div>
 
         <p class="renvoi reveal"><a class="button button-gold" id="recolte-renvoi" href="simulations.html#comparaison">Comparer les trois stratégies</a></p>
+      </div>
+    </section>
+
+    <!-- Traçabilité -->
+    <section id="tracabilite" class="section" aria-labelledby="titre-tracabilite">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow eyebrow-dark">Traçabilité</p>
+          <h2 id="titre-tracabilite">Chaque lot d'huile, retracé jusqu'à sa parcelle.</h2>
+          <p class="lead">À la réception, chaque remorque reçoit un numéro de lot. OleaSense relie ce lot à sa parcelle d'origine, à sa cuve et aux mesures de qualité, pour répondre en quelques clics à une question d'acheteur ou de contrôle.</p>
+        </div>
+        <ol class="trace-flow reveal" aria-label="Parcours d'un lot">
+          <li>Parcelle</li>
+          <li>Remorque</li>
+          <li>Cuve</li>
+          <li>Certificat</li>
+        </ol>
+        <div class="trace-steps">
+          <article class="card reveal">
+            <h3>Parcelle</h3>
+            <p>Chaque lot garde la mémoire de son origine : parcelle, variété et date de récolte, avec l'état de stress mesuré avant la cueillette.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Réception et cuve</h3>
+            <p>Pesée de la remorque, diagnostic optique du lot, puis affectation à une cuve du parc. Le trajet parcelle, remorque, cuve est enregistré.</p>
+          </article>
+          <article class="card reveal">
+            <h3>Qualité et certificat</h3>
+            <p>Acidité, classe de qualité (Extra Vierge, Vierge) et certificat PDF du lot, que vous pouvez envoyer par e-mail.</p>
+          </article>
+        </div>
+        <p class="trace-find"><strong>Pour retrouver un lot</strong> : recherche par numéro de lot, domaine ou date de récolte.</p>
+        <p class="renvoi"><a class="button button-gold" id="tracabilite-cta" href="#contact">Voir la traçabilité en démonstration</a></p>
       </div>
     </section>
 
@@ -267,72 +346,6 @@
             </ul>
           </article>
         </div>
-      </div>
-    </section>
-
-    <!-- Parcours -->
-    <section id="parcours" class="journey" aria-labelledby="titre-parcours">
-      <svg class="landscape" viewBox="0 0 1600 460" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false"></svg>
-      <div class="container journey-inner">
-        <div class="section-head section-head-light reveal">
-          <p class="eyebrow">Du verger à l'huile</p>
-          <h2 id="titre-parcours">Un fil continu, de la parcelle à la bouteille</h2>
-        </div>
-        <ol class="journey-steps">
-          <li class="reveal">
-            <span class="step-badge">1</span>
-            <h3>Mesurer</h3>
-            <p>Terrain, satellite et drone captent la lumière de chaque parcelle.</p>
-          </li>
-          <li class="reveal">
-            <span class="step-badge">2</span>
-            <h3>Diagnostiquer</h3>
-            <p>L'intelligence artificielle traduit les mesures en niveau de stress et en priorités.</p>
-          </li>
-          <li class="reveal">
-            <span class="step-badge">3</span>
-            <h3>Agir</h3>
-            <p>Alertes, doses d'irrigation et prescriptions pour intervenir au bon endroit.</p>
-          </li>
-          <li class="reveal">
-            <span class="step-badge">4</span>
-            <h3>Garantir</h3>
-            <p>Qualité à la réception, conformité et traçabilité jusqu'à la parcelle d'origine.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- Traçabilité -->
-    <section id="tracabilite" class="section section-tint" aria-labelledby="titre-tracabilite">
-      <div class="container">
-        <div class="section-head reveal">
-          <p class="eyebrow eyebrow-dark">Traçabilité</p>
-          <h2 id="titre-tracabilite">Chaque lot d'huile, retracé jusqu'à sa parcelle.</h2>
-          <p class="lead">À la réception, chaque remorque reçoit un numéro de lot. OleaSense relie ce lot à sa parcelle d'origine, à sa cuve et aux mesures de qualité, pour répondre en quelques clics à une question d'acheteur ou de contrôle.</p>
-        </div>
-        <ol class="trace-flow reveal" aria-label="Parcours d'un lot">
-          <li>Parcelle</li>
-          <li>Remorque</li>
-          <li>Cuve</li>
-          <li>Certificat</li>
-        </ol>
-        <div class="trace-steps">
-          <article class="card reveal">
-            <h3>Parcelle</h3>
-            <p>Chaque lot garde la mémoire de son origine : parcelle, variété et date de récolte, avec l'état de stress mesuré avant la cueillette.</p>
-          </article>
-          <article class="card reveal">
-            <h3>Réception et cuve</h3>
-            <p>Pesée de la remorque, diagnostic optique du lot, puis affectation à une cuve du parc. Le trajet parcelle, remorque, cuve est enregistré.</p>
-          </article>
-          <article class="card reveal">
-            <h3>Qualité et certificat</h3>
-            <p>Acidité, classe de qualité (Extra Vierge, Vierge) et certificat PDF du lot, que vous pouvez envoyer par e-mail.</p>
-          </article>
-        </div>
-        <p class="trace-find"><strong>Pour retrouver un lot</strong> : recherche par numéro de lot, domaine ou date de récolte.</p>
-        <p class="renvoi"><a class="button button-gold" id="tracabilite-cta" href="#contact">Voir la traçabilité en démonstration</a></p>
       </div>
     </section>
 
@@ -414,11 +427,11 @@
       </div>
     </section>
 
-    <!-- Engagements -->
+    <!-- Pourquoi OleaSense -->
     <section id="engagements" class="section" aria-labelledby="titre-engagements">
       <div class="container">
         <div class="section-head reveal">
-          <p class="eyebrow eyebrow-dark">Engagements</p>
+          <p class="eyebrow eyebrow-dark">Pourquoi OleaSense</p>
           <h2 id="titre-engagements">Une approche fiable, ouverte et utile</h2>
         </div>
         <div class="commit-grid">
@@ -446,17 +459,37 @@
       </div>
     </section>
 
-    <!-- Offres & calculateur -->
-    <section id="offres" class="section section-tint" aria-labelledby="titre-offres">
+    <!-- Sous le capot -->
+    <section id="sous-le-capot" class="section section-deep" aria-labelledby="titre-capot">
       <div class="container">
-        <div class="section-head">
-          <p class="eyebrow eyebrow-dark">Offres</p>
-          <h2 id="titre-offres">Choisir la formule adaptée à votre domaine</h2>
-          <p class="lead">Tarifs présentés à titre d'illustration : estimation indicative, non contractuelle.</p>
+        <div class="section-head section-head-light reveal">
+          <p class="eyebrow">Sous le capot</p>
+          <h2 id="titre-capot">D'où viennent les chiffres que vous voyez</h2>
+          <p class="lead">Chaque résultat indique d'où il vient, de quand il date et son niveau de fiabilité.</p>
         </div>
-        <p class="renvoi">
-          <a class="button" id="offres-renvoi-faq" href="simulations.html#faq">Questions fréquentes</a>
-        </p>
+        <ol class="journey-steps">
+          <li class="reveal">
+            <span class="step-badge">1</span>
+            <h3>Collecter</h3>
+            <p>Images satellite, mesures hyperspectrales, météo et observations saisies par vos équipes au champ.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-badge">2</span>
+            <h3>Traiter</h3>
+            <p>Les images sont nettoyées et recentrées sur votre parcelle pour en tirer des indicateurs simples : l'eau, la vigueur des arbres.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-badge">3</span>
+            <h3>Confronter</h3>
+            <p>Les sources sont comparées entre elles et à vos mesures. Quand elles divergent, la confiance baisse et le résultat le dit.</p>
+          </li>
+          <li class="reveal">
+            <span class="step-badge">4</span>
+            <h3>Calibrer et restituer</h3>
+            <p>Vos mesures de terrain affinent les estimations. Les résultats sortent en cartes, alertes et exports.</p>
+          </li>
+        </ol>
+        <p class="capot-note reveal">Une estimation consolidée n'est pas un diagnostic : elle gagne en précision à mesure que vos mesures de terrain s'ajoutent.</p>
       </div>
     </section>
 
