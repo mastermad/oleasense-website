@@ -11,7 +11,7 @@ function setMenu(open) {
   menu.classList.toggle('is-open', open);
 }
 
-/* Sous-menus Solutions / Produits / Simulations : sans JavaScript, chaque libellé pointe vers sa première option */
+/* Sous-menus Solutions / Produits / Engagements : sans JavaScript, chaque libellé pointe vers sa première option */
 document.documentElement.classList.add('js');
 const hoverQuery = window.matchMedia('(hover: hover) and (min-width: 1024px)');
 const megas = [];

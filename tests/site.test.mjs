@@ -35,10 +35,10 @@ test('en-tête identique sur toutes les pages, 404 comprise (chemins racine norm
   for (const page of pages) assert.equal(normalizeHeader(readFileSync(page, 'utf8')), reference, rel(page));
 });
 
-test('en-tête : quatre sous-menus, À propos et bouton de démonstration', () => {
+test('en-tête : trois sous-menus, À propos et bouton de démonstration', () => {
   const header = headerOf(readDoc('index.html'));
-  assert.equal((header.match(/class="has-mega"/g) ?? []).length, 4);
-  for (const label of ['Solutions', 'Produits', 'Engagements', 'Simulations', 'À propos', 'Demander une démonstration']) assert.ok(header.includes(`>${label}<`), label);
+  assert.equal((header.match(/class="has-mega"/g) ?? []).length, 3);
+  for (const label of ['Solutions', 'Produits', 'Engagements', 'À propos', 'Demander une démonstration']) assert.ok(header.includes(`>${label}<`), label);
 });
 
 test('chaque page avec en-tête charge menu.js avant script.js et déclare les icônes utilisées', () => {
@@ -50,15 +50,6 @@ test('chaque page avec en-tête charge menu.js avant script.js et déclare les i
   }
 });
 
-test('simulations.html : comparaison avec ses scripts', () => {
-  const html = readDoc('simulations.html');
-  for (const id of ['comparaison', 'matrice-recolte', 'recolte-cta']) assert.match(html, new RegExp(`id="${id}"`), id);
-  for (const id of ['gain', 'roi-form', 'roi-surface', 'roi-offre', 'roi-resultat']) assert.doesNotMatch(html, new RegExp(`id="${id}"`), id);
-  for (const script of ['maturite.js', 'roi.js', 'offres.js']) assert.match(html, new RegExp(`<script src="${script}" defer>`));
-  assert.match(html, /id="recolte-cta"[^>]*href="index\.html#contact"|href="index\.html#contact"[^>]*id="recolte-cta"/);
-  assert.match(readDoc('sitemap.xml'), /<loc>https:\/\/oleasense\.com\/simulations\.html<\/loc>/);
-});
-
 test('index : Bridge renommé avec ancre de compatibilité, traçabilité et renvois', () => {
   const html = readDoc('index.html');
   assert.match(html, /OleaSense Bridge/);
@@ -67,17 +58,8 @@ test('index : Bridge renommé avec ancre de compatibilité, traçabilité et ren
   const trace = /<section id="tracabilite"[\s\S]*?<\/section>/.exec(html)?.[0] ?? '';
   for (const step of ['Parcelle', 'Remorque', 'Cuve', 'Certificat']) assert.ok(trace.includes(step), step);
   assert.match(trace, /id="tracabilite-cta"[^>]*href="#contact"/);
-  assert.match(html, /id="recolte-renvoi"[^>]*href="simulations\.html#comparaison"/);
   const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);
   assert.equal(new Set(ids).size, ids.length);
-});
-
-test('simulations.html : config.js chargé avant les scripts de simulation', () => {
-  const html = readDoc('simulations.html');
-  assert.match(html, /<script src="config\.js" defer><\/script>/);
-  assert.ok(html.indexOf('config.js') < html.indexOf('roi.js'));
-  assert.ok(html.indexOf('config.js') < html.indexOf('offres.js'));
-  assert.ok(existsSync(join(root, 'config.js')));
 });
 
 test('index : ancre Bridge, sans renvoi vers le calcul de gain', () => {
@@ -85,11 +67,6 @@ test('index : ancre Bridge, sans renvoi vers le calcul de gain', () => {
   assert.match(html, /<article id="solution-bridge"/);
   assert.match(html, /<span id="solution-pont"/);
   assert.doesNotMatch(html, /offres-renvoi-gain|simulations\.html#gain/);
-});
-
-test('simulations.html : ids uniques', () => {
-  const ids = [...readDoc('simulations.html').matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);
-  assert.equal(new Set(ids).size, ids.length);
 });
 
 const css = readDoc('styles.css');
@@ -139,8 +116,8 @@ test('défilement doux et mouvements réduits conservés', () => {
   assert.doesNotMatch(css, /scrollbar-gutter/);
 });
 
-test('simulations.html : table-wrap atteignable au clavier avec nom accessible', () => {
-  const html = readDoc('simulations.html');
+test('index : table-wrap de la comparaison atteignable au clavier avec nom accessible', () => {
+  const html = readDoc('index.html');
   const tag = /<div class="table-wrap[^"]*"[^>]*>/.exec(html)?.[0] ?? '';
   assert.match(tag, /tabindex="0"/);
   assert.match(tag, /role="region"/);

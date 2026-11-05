@@ -1,5 +1,5 @@
 /*
- * Logique pure des sous-menus Solutions, Produits et Simulations (testée par node:test).
+ * Logique pure des sous-menus Solutions, Produits et Engagements (testée par node:test).
  * Exposé sous `window.OleaMenu` dans le navigateur, et via `module.exports`
  * sous Node.
  */

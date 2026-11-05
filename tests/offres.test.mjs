@@ -11,7 +11,6 @@ const require = createRequire(import.meta.url);
 const roi = require(join(docs, 'roi.js'));
 const read = name => readFileSync(join(docs, name), 'utf8');
 const data = JSON.parse(read('data/offres.json'));
-const html = read('simulations.html');
 const index = read('index.html');
 const hyp = data.hypotheses;
 
@@ -69,7 +68,6 @@ test('CA4 : mention indicative et validation des données', () => {
 test('CA5 : ressources locales, sans URL externe ni stockage', () => {
   for (const s of ['roi.js', 'offres.js']) {
     assert.ok(existsSync(join(docs, s)));
-    assert.match(html, new RegExp(`<script src="${s}" defer>`));
     assert.doesNotMatch(read(s), /https?:\/\/|document\.cookie|localStorage/);
   }
   assert.doesNotMatch(read('data/offres.json'), /https?:\/\//);

@@ -16,11 +16,11 @@ const script = read('script.js');
 const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map(match => match[1]);
 const nav = html.match(/<nav id="menu-principal"[\s\S]*?<\/nav>/)[0];
 const panelOf = name => html.match(new RegExp(`<div id="mega-${name}"[\\s\\S]*?<\\/ul>\\s*<\\/div>\\s*(?:<div class="mega-col"[\\s\\S]*?<\\/ul>\\s*<\\/div>\\s*)*<\\/div>`))[0];
-const panels = Object.fromEntries(['solutions', 'produits', 'engagements', 'simulations'].map(name => [name, panelOf(name)]));
+const panels = Object.fromEntries(['solutions', 'produits', 'engagements'].map(name => [name, panelOf(name)]));
 const linksOf = panel => [...panel.matchAll(/<a class="mega-link" href="([^"]+)">[\s\S]*?<strong>([^<]+)<\/strong>/g)].map(match => ({ href: match[1], label: match[2] }));
 const anchorExists = href => {
   const [page, id] = href.split('#');
-  return (page === 'simulations.html' ? read('simulations.html') : html).includes(`id="${id}"`);
+  return html.includes(`id="${id}"`);
 };
 
 test('nextState : toggle, open, fermetures et évènement inconnu', () => {
@@ -129,21 +129,20 @@ test('createCloser : minuteries globales par défaut', async () => {
   assert.equal(closed, 1);
 });
 
-test('CA1 : quatre sous-menus Solutions, Produits, Engagements et Simulations, plus À propos', () => {
-  assert.equal((nav.match(/<li class="has-mega">/g) || []).length, 4);
-  for (const name of ['solutions', 'produits', 'engagements', 'simulations']) assert.ok(ids.includes(`mega-${name}`), name);
+test('CA1 : trois sous-menus Solutions, Produits et Engagements, plus À propos', () => {
+  assert.equal((nav.match(/<li class="has-mega">/g) || []).length, 3);
+  for (const name of ['solutions', 'produits', 'engagements']) assert.ok(ids.includes(`mega-${name}`), name);
   assert.match(nav, /<li><a href="a-propos\.html">À propos<\/a><\/li>/);
   assert.deepEqual(linksOf(panels.solutions).map(link => link.label), ['Ce que la lumière révèle', "Du verger à l'huile", 'Timing de récolte', 'Traçabilité']);
   assert.deepEqual(linksOf(panels.produits).map(link => link.label), ['OleaSense Field', 'OleaSense Mill', 'OleaSense Bridge', 'Application', 'Pour qui']);
   assert.deepEqual(linksOf(panels.engagements).map(link => link.label), ['Pourquoi OleaSense', 'Sous le capot']);
-  assert.deepEqual(linksOf(panels.simulations).map(link => link.label), ['Comparaison de trois stratégies de récolte']);
   assert.doesNotMatch(html, /pont agro-huilerie/i);
 });
 
 test('CA1 : chaque lien des panneaux pointe vers une ancre existante', () => {
   for (const panel of Object.values(panels)) {
     for (const link of linksOf(panel)) {
-      assert.match(link.href, /^(index|simulations)\.html#/);
+      assert.match(link.href, /^index\.html#/);
       assert.ok(anchorExists(link.href), `ancre manquante : ${link.href}`);
     }
   }
@@ -153,14 +152,13 @@ test('CA2 : sans JavaScript, chaque libellé pointe vers sa première option', (
   assert.match(html, /<a id="solutions-lien" href="index\.html#lumiere">Solutions<\/a>/);
   assert.match(html, /<a id="produits-lien" href="index\.html#solution-field">Produits<\/a>/);
   assert.match(html, /<a id="engagements-lien" href="index\.html#engagements">Engagements<\/a>/);
-  assert.match(html, /<a id="simulations-lien" href="simulations\.html#comparaison">Simulations<\/a>/);
   assert.match(css, /\.js \.mega-toggle \{ display: inline-flex/);
   assert.match(css, /\.mega-toggle \{ display: none/);
   assert.match(script, /classList\.add\('js'\)/);
 });
 
 test('CA3 : boutons avec aria-expanded et aria-controls valides, panneaux masqués', () => {
-  for (const name of ['solutions', 'produits', 'engagements', 'simulations']) {
+  for (const name of ['solutions', 'produits', 'engagements']) {
     const button = html.match(new RegExp(`<button id="${name}-bouton"[^>]*>`))[0];
     assert.match(button, /aria-expanded="false"/);
     assert.match(button, /type="button"/);
@@ -209,7 +207,6 @@ test('CA3 à CA5 : destinations exactes de chaque sous-menu', () => {
   assert.deepEqual(linksOf(panels.solutions).map(link => link.href), ['index.html#lumiere', 'index.html#parcours', 'index.html#recolte', 'index.html#tracabilite']);
   assert.deepEqual(linksOf(panels.produits).map(link => link.href), ['index.html#solution-field', 'index.html#solution-mill', 'index.html#solution-bridge', 'index.html#application', 'index.html#utilisateurs']);
   assert.deepEqual(linksOf(panels.engagements).map(link => link.href), ['index.html#engagements', 'index.html#sous-le-capot']);
-  assert.deepEqual(linksOf(panels.simulations).map(link => link.href), ['simulations.html#comparaison']);
 });
 
 test('CA6 : chaque option du menu a une icône, un titre et une description', () => {
